@@ -14,7 +14,7 @@ body{
 }
 table{
   margin-top: 20px;
-  width:150%;
+  width:100%;
 }
 td,th{
   border: 1px solid gray;
@@ -47,6 +47,10 @@ td,th{
 }
 .btn-margin{
   margin-top:10%;
+}
+.red{
+  color:red;
+  padding-left: 12%;
 }
 .sidebar{
   display: flex;
@@ -132,7 +136,7 @@ div.table-title {
  margin: auto;
  max-width: 400px;
  padding:2px;
- width: 100%;
+ width: 80%;
 }
 
 .table-title h3 {
