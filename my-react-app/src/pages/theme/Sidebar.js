@@ -8,19 +8,19 @@ const Sidebar = () => {
             <li>
 
                 <Link to="/pages/UserManagement">
-                    <button>User Management</button>
+                    <button>Speaker List</button>
                 </Link>
             </li>
 
             <li>
             <Link to="/pages/Faq">
-            <button>Faq</button>
+            <button>Timer</button>
                     </Link>
             </li>
 
             <li>
             <Link to="/pages/Contact">
-                    <button>Contact</button>
+                    <button>Um Counter</button>
                     </Link>
             </li>
         </ul>
