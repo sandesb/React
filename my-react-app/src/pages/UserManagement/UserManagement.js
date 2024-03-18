@@ -54,8 +54,8 @@ useEffect( ()=> {
         </tr>
 
         {users.length>0 &&
-        <div>
-        {
+        
+        
             users.map((user,index)=>{
                 return(
                     <tr key={index}>
@@ -68,12 +68,13 @@ useEffect( ()=> {
 
                 )
             })
-        }
         
-        </div>
+        
+        
 }
 { users.length === 0 &&
-<div>No Records Found.</div>
+<tr>
+    <td colSpan={4}>No Records Found.</td></tr>
 }
         
         </table>
