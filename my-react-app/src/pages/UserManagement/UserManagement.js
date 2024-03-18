@@ -34,7 +34,8 @@ const UserManagement = () => {
 const [users, setUsers] = useState([]);
 
 useEffect( ()=> {
-console.log("hello")
+    setTimeout(()=>{
+    setUsers(data);},3000)
 }, []);
 
     return (
@@ -52,10 +53,12 @@ console.log("hello")
           <th>City</th>
         </tr>
 
+        {users.length>0 &&
+        <div>
         {
-            users.map((user)=>{
+            users.map((user,index)=>{
                 return(
-                    <tr>
+                    <tr key={index}>
                     <td>{user.username}</td>
                     <td>{user.email}</td>
                     <td>{user.age}</td>
@@ -66,6 +69,13 @@ console.log("hello")
                 )
             })
         }
+        
+        </div>
+}
+{ users.length === 0 &&
+<div>No Records Found.</div>
+}
+        
         </table>
      
         </div>
