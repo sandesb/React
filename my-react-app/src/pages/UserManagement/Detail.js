@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useEffect } from "react";
-
 import { useParams } from "react-router-dom";
 
 
@@ -56,9 +55,9 @@ const [user, setUser] = useState({
         <div>
             {/* <h1>User Details {id} {username}</h1> */}
             <div>Username: {user.username}</div>
-            <div>Username: {user.age}</div>
-            <div>Username: {user.city}</div>
-            <div>Username: {user.email}</div>
+            <div>Age: {user.age}</div>
+            <div>City: {user.city}</div>
+            <div>Email: {user.email}</div>
 
         </div>
         );

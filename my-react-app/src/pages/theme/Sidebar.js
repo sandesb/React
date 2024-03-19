@@ -14,13 +14,19 @@ const Sidebar = () => {
 
             <li>
             <Link to="/pages/Faq">
-            <button>Timer</button>
+            <button>Timer Count</button>
                     </Link>
             </li>
 
             <li>
             <Link to="/pages/Contact">
                     <button>Um Counter</button>
+                    </Link>
+            </li>
+
+            <li>
+            <Link to="/pages/Randomizer">
+                    <button>Randomizer</button>
                     </Link>
             </li>
         </ul>
