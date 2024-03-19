@@ -2,37 +2,44 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const AddUser = () => {
   const navigate = useNavigate();
-    const [showData, setShowData] = useState(false)
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [age, setAge] = useState('');
-    const [city, setCity] = useState('');
+    // const [username, setUsername] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [age, setAge] = useState('');
+    // const [city, setCity] = useState('');
+
+    const [user, setUser] = useState(
+      {
+        username: "",
+        email:"",
+        age:"",
+        city: "",
+      })
 
 
-    
-    const handleUsernameChange = (event) => {
-      setUsername(event.target.value);
+    const handleInputChange = (event) => {
+      setUser({...user, [event.target.name]: event.target.value})
     }
 
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-      }
+    // const handleUsernameChange = (event) => {
+    //   setUser({...user, username:event.target.value });
+    // }
 
-      const handleAgeChange = (event) => {
-        setAge(event.target.value);
-      }
+    // const handleEmailChange = (event) => {
+    //     setEmail({...user, email:event.target.value});
+    //   }
 
-      const handleCityChange = (event) => {
-        setCity(event.target.value);
-      }
+    //   const handleAgeChange = (event) => {
+    //     setAge({...user, age:event.target.value});
+    //   }
+
+    //   const handleCityChange = (event) => {
+    //     setCity({...user, city:event.target.value});
+    //   }
+
     const saveForm = () => {
-      setShowData(true)
-      console.log('save form');
-      console.log('username: ', username);
-      console.log('email: ', email);
-      console.log('age: ', age);
-      console.log('city: ', city);
-      navigate('/Pages/UserManagement');
+      console.log('User:', user);
+      navigate('/user-management');
+      // navigate('/Pages/UserManagement');
     }
 
    
@@ -42,45 +49,40 @@ const AddUser = () => {
         <div>
           <input 
             type="text"
-            onChange={handleUsernameChange}
+            onChange={handleInputChange}
             placeholder="username"
-
-            value={username} />
+          name="username"
+            value={user.username} />
         </div>
         <div>
           <input type="text"
-            onChange={handleEmailChange}
+            onChange={handleInputChange}
             placeholder="email"
-          value={email}
+          name="email"
+
+          value={user.email}
           />
         </div>
         <div>
           <input type="text"
-            onChange={handleAgeChange}
+            onChange={handleInputChange}
             placeholder="age"
+            name="age"
 
-          value={age}
+          value={user.age}
           />
         </div>
         <div>
           <input type="text"
-            onChange={handleCityChange}
+            onChange={handleInputChange}
             placeholder="city"
+            name="city"
 
-          value={city}
+          value={user.city}
           />
         </div>
         <button class="btn-margin"onClick={saveForm}>Save</button>
 
-        { showData && 
-        <div>
-          <p>{username}</p>
-          <p>{email}</p>
-          <p>{age}</p>
-          <p>{city}</p>
-        </div>
-
-        }
       </div>
     );
 }

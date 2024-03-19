@@ -72,9 +72,9 @@ useEffect( ()=> {
                     <td>{user.age}</td>
                     <td>{user.city}</td>
                     <td>
-                    <Link to={`/pages/AddUser/edit/${user.id}`}>
-            Edit
-            </Link>
+            <Link to={`/pages/UserManagement/Detail/${user.id}`}> Detail </Link>
+
+            <Link to={`/pages/AddUser/edit/${user.id}`}> Edit </Link>
 
             <Link className="red" to={`/pages/AddUser/delete/${user.id}`}>
             Delete

@@ -47,31 +47,39 @@ const Contact = () => {
     <div class="flex-wrap1">
         <div class="um">
       <h1 >Um Counter:</h1>
-      <h2 id="count-el">{count}</h2></div>
+      <h2 id="count-el">{count}</h2>
+      <button onClick={increment} class="um-button">Um Bhanyo</button>
+      
+      </div>
+      
       <div class="um">
       <h1 >Ah Counter:</h1>
-      <h2 id="count-el">{count1}</h2></div>
+      <h2 id="count-el">{count1}</h2>
+      <button onClick={increment1} class="um-button">Ah Bhanyo</button>
+      
+      </div>
       <div class="um">
       <h1>Like Counter:</h1>
-      <h2 id="count-el">{count2}</h2></div>
-            <br></br>
+      <h2 id="count-el">{count2}</h2>
+      <button onClick={increment2} class="um-button">Like Bhanyo</button>
+      
+      </div>
+
             </div>
+
             <div class="group">      
             <input type="text" class="uname"
             onChange={handleUsernameChange}
             value={username} required/>
 
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Name</label>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Name of Speaker</label>
+            <button id="save-btn" onClick={save}>SAVE</button>
+
     </div>
-      
 
-      <button onClick={increment}>Um Bhanyo</button>
-      <button onClick={increment1}>Ah Bhanyo</button>
-      <button onClick={increment2}>Like Bhanyo</button>
 
-      <button id="save-btn" onClick={save}>SAVE</button>
       <p>Speaker: {previousName}</p>
 
       <p>Um Counts: {previousEntries}</p>

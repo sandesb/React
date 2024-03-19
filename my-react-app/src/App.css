@@ -52,6 +52,15 @@ td,th{
   color:red;
   padding-left: 12%;
 }
+.um-button{
+  margin-top: 10%;
+  margin-right: 15%;
+}
+.uname{
+  width: 100%;
+  margin-left: 10%;
+  margin-top: 5%;
+}
 .sidebar{
   display: flex;
   height:800px;
@@ -149,8 +158,8 @@ div.table-title {
   text-transform:uppercase;
 }
 #save-btn{
-  margin-left: 10%;
-  margin-top: 10%;
+  margin-left: 50%;
+  margin-top: 4%;
 }
 
 
@@ -338,7 +347,7 @@ label          {
   font-weight:normal;
   position:absolute;
   pointer-events:none;
-  left:5px;
+  left:12%;
   top:10px;
   transition:0.2s ease all; 
   -moz-transition:0.2s ease all; 
@@ -349,18 +358,19 @@ label          {
 input:focus ~ label, input:valid ~ label    {
   top:-20px;
   font-size:14px;
-  color:#5264AE;
+  color:#418dff;
 }
 
 /* BOTTOM BARS ================================= */
-.bar  { position:relative; display:block; width:200px; }
+.bar  { position:relative; display:block; width:50%; }
 .bar:before, .bar:after   {
   content:'';
   height:2px; 
   width:0;
+  left:20%;
   bottom:1px; 
   position:absolute;
-  background:#5264AE; 
+  background:#418dff; 
   transition:0.2s ease all; 
   -moz-transition:0.2s ease all; 
   -webkit-transition:0.2s ease all;
@@ -374,16 +384,16 @@ input:focus ~ label, input:valid ~ label    {
 
 /* active state */
 input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
+  width:100%;
 }
 
 /* HIGHLIGHTER ================================== */
 .highlight {
   position:absolute;
-  height:60%; 
+  height:10%; 
   width:100px; 
   top:25%; 
-  left:0;
+  left:10%;
   pointer-events:none;
   opacity:0.5;
 }

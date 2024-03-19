@@ -6,6 +6,7 @@ import UserManagement from './pages/UserManagement/UserManagement';
 import AddUser from './pages/UserManagement/AddUser'
 import Contact from './pages/Contact';
 import Faq from './pages/Faq';
+import Detail from './pages/UserManagement/Detail';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Layout/>}>
           <Route path="/pages/UserManagement" element={<UserManagement/> } />
           <Route path="/pages/AddUser" element={<AddUser/> } />
+          <Route path="/pages/UserManagement/Detail/:id" element={<Detail/> } />
 
           <Route path="/pages/Faq" element={<Faq/> } />
           <Route path="/pages/Contact" element={<Contact/> } />
