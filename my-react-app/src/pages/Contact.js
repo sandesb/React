@@ -2,16 +2,13 @@ import React, { useState } from "react";
 
 const Contact = () => {
   const [count, setCount] = useState(0);
-  const [previousEntries, setPreviousEntries] = useState("");
-
   const [count1, setCount1] = useState(0);
-  const [previousEntries1, setPreviousEntries1] = useState("");
-
   const [count2, setCount2] = useState(0);
-  const [previousEntries2, setPreviousEntries2] = useState("");
-
   const [username, setUsername] = useState('');
-  const [previousName, setPreviousName] = useState("");
+  const [previousEntries, setPreviousEntries] = useState([]);
+  const [customCounts, setCustomCounts] = useState([]);
+  const [newFillerWord, setNewFillerWord] = useState('');
+  const [showInput, setShowInput] = useState(true);
 
   const increment = () => {
     setCount((prevCount) => prevCount + 1);
@@ -27,67 +24,134 @@ const Contact = () => {
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
-  }
-
+  };
   const save = () => {
-    let countStr = count + " - ";
-    let countStr1 = count1 + " - ";
-    let countStr2 = count2 + " - ";
-
-    setPreviousEntries((prevEntries) => prevEntries + countStr);
-    setPreviousEntries1((prevEntries1) => prevEntries1 + countStr1);
-    setPreviousEntries2((prevEntries2) => prevEntries2 + countStr2);
-
-    setPreviousName((prevName) => prevName + username + " | ");
+    const newEntry = {
+      name: username,
+      umCount: count,
+      ahCount: count1,
+      likeCount: count2,
+      otherCounts: customCounts.map(item => ({ word: item.word, count: item.count }))
+    };
+  
+    setPreviousEntries((prevEntries) => [...prevEntries, newEntry]);
     setCount(0);
+    setCount1(0);
+    setCount2(0);
+    setUsername('');
+    setCustomCounts([]);
+    setNewFillerWord('');
+    setShowInput(true); // Set showInput to true after saving
+  };
+  const addCustomCount = () => {
+    if (newFillerWord.trim() !== '') {
+      setCustomCounts((prevCounts) => [
+        ...prevCounts,
+        { word: newFillerWord, count: 1 }
+      ]);
+      setNewFillerWord('');
+      setShowInput(false);
+    }
+  };
+
+  const incrementCustomCount = (index) => {
+    setCustomCounts((prevCounts) =>
+      prevCounts.map((item, i) =>
+        i === index ? { ...item, count: item.count + 1 } : item
+      )
+    );
+  };
+
+  const handleNewFillerWordChange = (event) => {
+    setNewFillerWord(event.target.value);
   };
 
   return (
     <div>
-    <div class="flex-wrap1">
-        <div class="um">
-      <h1 >Um Counter:</h1>
-      <h2 id="count-el">{count}</h2>
-      <button onClick={increment} class="um-button">Um Bhanyo</button>
-      
+    <div class="counter-container">
+  <div class="um">
+    <h1>Um Counter:</h1>
+    <h2 id="count-el">{count}</h2>
+    <button onClick={increment} class="um-button">Um Bhanyo</button>
+  </div>
+
+  <div class="um">
+    <h1>Ah Counter:</h1>
+    <h2 id="count-el">{count1}</h2>
+    <button onClick={increment1} class="um-button">Ah Bhanyo</button>
+  </div>
+
+  <div class="um">
+    <h1>Like Counter:</h1>
+    <h2 id="count-el">{count2}</h2>
+    <button onClick={increment2} class="um-button">Like Bhanyo</button>
+  </div>
+
+  <div class="um custom">
+    <h1>Custom Counter:</h1>
+    {customCounts.map((item, index) => (
+      <div key={index}>
+        <h2>{item.word} Counter:</h2>
+        <h2 id="count-el">{item.count}</h2>
+        <button onClick={() => incrementCustomCount(index)} className="um-button">
+          {item.word} Bhanyo
+        </button>
       </div>
-      
-      <div class="um">
-      <h1 >Ah Counter:</h1>
-      <h2 id="count-el">{count1}</h2>
-      <button onClick={increment1} class="um-button">Ah Bhanyo</button>
-      
+    ))}
+    {showInput && (
+      <div class="custom">
+        <input
+          type="text"
+          className="custom-word"
+          value={newFillerWord}
+          onChange={handleNewFillerWordChange}
+          required
+        />
+        <button class="plus-button"onClick={addCustomCount}>+</button>
       </div>
-      <div class="um">
-      <h1>Like Counter:</h1>
-      <h2 id="count-el">{count2}</h2>
-      <button onClick={increment2} class="um-button">Like Bhanyo</button>
-      
+    )}
+  </div>
+</div>
+
+
+      <div class="group">      
+        <input 
+          type="text" 
+          class="uname"
+          onChange={handleUsernameChange}
+          value={username} 
+          required
+        />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Name of Speaker</label>
+        <button id="save-btn" onClick={save}>SAVE</button>
       </div>
 
-            </div>
-
-            <div class="group">      
-            <input type="text" class="uname"
-            onChange={handleUsernameChange}
-            value={username} required/>
-
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Name of Speaker</label>
-            <button id="save-btn" onClick={save}>SAVE</button>
-
-    </div>
-
-
-      <p>Speaker: {previousName}</p>
-
-      <p>Um Counts: {previousEntries}</p>
-      <p>Ah Counts: {previousEntries1}</p>
-      <p>Like Counts: {previousEntries2}</p>
-
-
-
+      <table class="rep-table">
+        <tr>
+          <th class="text-left">Speaker</th>
+          <th class="text-left">Um</th>
+          <th>Ah</th>
+          <th>Like</th>
+          <th>Others</th>        
+        </tr>
+        {previousEntries.map((entry, index) => (
+          <tr key={index}>
+            <td>{entry.name}</td>
+            <td>{entry.umCount}</td>
+            <td>{entry.ahCount}</td>
+            <td>{entry.likeCount}</td>
+            <td>
+              {entry.otherCounts.map((item, idx) => (
+                <div key={idx}>
+                  {item.word}: {item.count}
+                </div>
+              ))}
+            </td>
+          </tr>
+        ))}
+      </table>
     </div>
   );
 };
