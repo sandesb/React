@@ -47,6 +47,7 @@ const Faq = () => {
         setHour(0);
         setMinute(0);
         setSecond(0);
+        
     }
 
     function returnData(input) {

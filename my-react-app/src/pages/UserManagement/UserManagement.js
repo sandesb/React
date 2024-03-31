@@ -1,10 +1,26 @@
 import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
-
-
+import ViTable from "../../components/ViTable";
 
 const UserManagement = () => {
-
+    const header = [
+        {
+            key: "username",
+            name: "Username",
+        },
+        {
+            key: "email",
+            name: "Email",
+        },
+        {
+            key: "age",
+            name: "Age",
+        },
+        {
+            key: "city",
+            name: "City",
+        }
+    ]
     const data = [
         {
             id: 1,
@@ -49,16 +65,69 @@ useEffect( ()=> {
         <h1>User Management</h1>
         <Link to="/pages/AddUser">
             Add
+            </Link><br></br>
+            <Link to="/pages/Login">
+            Login
             </Link>
-        
-        <table>
+
+        <ViTable 
+        data={users}
+        header={header}
+        actions={[
+            {
+              name: "Detail",
+              link: "/UserManagement/detail",
+              className: "btn btn-default"
+            },
+            {
+              name: "Edit",
+              link: "/UserManagement/edit",
+              className: "btn"
+            },
+            {
+              name: "Delete",
+              link: "/UserManagement/delete",
+              className: "btn btn-danger"
+            }
+          ]}
+
+        />
+
+        <ViTable 
+
+        header={[
+            {
+            "key": "name",
+            "name": "Name",
+            },
+            {
+            "key": "branch",
+            "name": "Branch"
+            }
+        ]}
+        data={[
+            {
+              "name": "Everest",
+              "branch": "Baneshwor"
+            },
+            {
+              "name": "Sanima",
+              "branch": "Bouddha"
+            },
+            {
+              "name": "Siddhartha",
+              "branch": "Patan"
+            }
+          ]}
+  
+          />
+        {/* <table>
         <tr>
           <th class="text-left">Username</th>
           <th class="text-left">Email</th>
           <th>Age</th>
           <th>City</th>
-          <th>Action</th>
-          
+          <th>Action</th>        
         </tr>
 
         {users.length>0 &&
@@ -95,7 +164,7 @@ useEffect( ()=> {
     <td colSpan={5}>No Records Found.</td></tr>
 }
         
-        </table>
+        </table> */}
      
         </div>
         );

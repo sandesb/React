@@ -1,85 +1,112 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ViTextInput from "../../components/ViTextInput";
+import ViPassInput from "../../components/ViPassInput";
+
+
 const AddUser = () => {
   const navigate = useNavigate();
-    // const [username, setUsername] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [age, setAge] = useState('');
-    // const [city, setCity] = useState('');
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const [user, setUser] = useState(
       {
         username: "",
+        password: "",
         email:"",
         age:"",
         city: "",
       })
 
+      const [errorMsg, setErrMsg] = useState({
+        username: "",
+        password: "",
+        email: "",
+        age: "",
+        city: "",
+      });
 
+      const validateForm = () => {
+        return (
+          user.username === '' ? false :
+          user.password === '' ? false :
+          user.email === '' ? false :
+          user.age === '' ? false :
+          user.city === '' ? false : true
+        );
+      };
+      
     const handleInputChange = (event) => {
       setUser({...user, [event.target.name]: event.target.value})
     }
 
-    // const handleUsernameChange = (event) => {
-    //   setUser({...user, username:event.target.value });
-    // }
-
-    // const handleEmailChange = (event) => {
-    //     setEmail({...user, email:event.target.value});
-    //   }
-
-    //   const handleAgeChange = (event) => {
-    //     setAge({...user, age:event.target.value});
-    //   }
-
-    //   const handleCityChange = (event) => {
-    //     setCity({...user, city:event.target.value});
-    //   }
-
     const saveForm = () => {
+      setIsSubmitted(true);
       console.log('User:', user);
-      navigate('/user-management');
-      // navigate('/Pages/UserManagement');
+      if(validateForm()){
+        navigate('/pages/UserManagement');
+
+      }
     }
 
    
     return (
       <div>
         <h1>Add User</h1>
-        <div>
-          <input 
-            type="text"
-            onChange={handleInputChange}
-            placeholder="username"
-          name="username"
-            value={user.username} />
-        </div>
+       <ViTextInput 
+       title="username"
+       name="username"
+       value={user.username}
+       handleInputChange={handleInputChange}
+       isSubmitted={isSubmitted}
+       errMessage={errorMsg.username}/>
+
+       <div>
+       <ViPassInput 
+       title="password"
+       name="password"
+       value={user.password}
+       handleInputChange={handleInputChange}
+       isSubmitted={isSubmitted}
+       errMessage={errorMsg.password}/>
+       </div>
+       
         <div>
           <input type="text"
-            onChange={handleInputChange}
-            placeholder="email"
+          onChange={handleInputChange}
+          placeholder="email"
           name="email"
-
           value={user.email}
           />
+            {isSubmitted &&  user.email === '' && 
+            <span class="danger"> Email is required</span>
+            }
+
         </div>
         <div>
           <input type="text"
             onChange={handleInputChange}
             placeholder="age"
             name="age"
-
+            required
           value={user.age}
           />
+  { isSubmitted &&  user.age === '' && 
+            <span class="danger"> Age is required</span>
+            }
+
         </div>
         <div>
           <input type="text"
             onChange={handleInputChange}
             placeholder="city"
             name="city"
-
+            required
           value={user.city}
           />
+     { isSubmitted &&  user.city === '' && 
+            <span class="danger"> City is required</span>
+            }
+
         </div>
         <button class="btn-margin"onClick={saveForm}>Save</button>
 

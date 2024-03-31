@@ -58,7 +58,6 @@ const [user, setUser] = useState({
             <div>Age: {user.age}</div>
             <div>City: {user.city}</div>
             <div>Email: {user.email}</div>
-
         </div>
         );
     };
