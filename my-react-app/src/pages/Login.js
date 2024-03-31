@@ -6,6 +6,7 @@ import ViTextInput from "../components/ViTextInput";
 
 const Login = () => {
 
+
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -25,6 +26,7 @@ const Login = () => {
       }
   
       if(isLogin) {
+        localStorage.setItem('isLogin', '1');
         navigate('/Pages/UserManagement');
       } else {
         alert('Login failed');
@@ -35,7 +37,6 @@ const Login = () => {
         <div>
             <div class="box">
             <h1>Login</h1>
-
             <form method="post" action="index.html">
 
 <h1>Dashboard</h1>
