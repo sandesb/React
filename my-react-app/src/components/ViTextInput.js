@@ -11,7 +11,6 @@ const ViTextInput = (props) => {
             <span class="danger"> Username is required</span>
             }
         </div>
- 
  );
 }
 export default ViTextInput;

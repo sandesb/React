@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ViTextInput from "../../components/ViTextInput";
 import ViPassInput from "../../components/ViPassInput";
+import { v4 as uuidv4 } from 'uuid';
+import axios from "axios";
 
 
 const AddUser = () => {
@@ -40,15 +42,24 @@ const AddUser = () => {
     }
 
     const saveForm = () => {
-      setIsSubmitted(true);
-      console.log('User:', user);
+
+      
+  const uuid = uuidv4();
+
       if(validateForm()){
-        navigate('/pages/UserManagement');
-
-      }
+        const item = {...user, id:uuid}
+        console.log('User:', item);
+        axios.post('http://localhost:4000/users', item)
+        .then(()=>{
+          console.log("user saved");
+          navigate('/pages/UserManagement');
+        }).catch((err)=>{
+          console.log(err);
+          alert("SERVER ERROR");
+        })
+        // navigate('/pages/UserManagement');
     }
-
-   
+  }
     return (
       <div>
         <h1>Add User</h1>

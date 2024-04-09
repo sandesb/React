@@ -1,8 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useNavigate  } from "react";
 import {Link} from "react-router-dom";
 import ViTable from "../../components/ViTable";
+import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 
 const UserManagement = () => {
+
+  const uuid = uuidv4();
+  console.log(uuid);
+
+
     const header = [
         {
             key: "username",
@@ -21,54 +28,146 @@ const UserManagement = () => {
             name: "City",
         }
     ]
-    const data = [
-        {
-            id: 1,
-            username: 'John',
-            email: 'jon@gmail.com',
-            age: 25,
-            city: 'New York'
-        },
-        {
-            id: 2,
+    // const data = [
+    //     {
+    //         id: 1,
+    //         username: 'John',
+    //         email: 'jon@gmail.com',
+    //         age: 25,
+    //         city: 'New York'
+    //     },
+    //     {
+    //         id: 2,
 
-            username: 'Cena',
-            email: 'cena@gmail.com',
-            age: 30,
-            city: 'New Jersey'
-        },
-        {
-            id: 3,
+    //         username: 'Cena',
+    //         email: 'cena@gmail.com',
+    //         age: 30,
+    //         city: 'New Jersey'
+    //     },
+    //     {
+    //         id: 3,
 
-            username: 'Brock',
-            email: 'brock@gmail.com',
-            age: 22,
-            city: 'Old York'
-        },
-        {
-            id: 4,
-            username: 'Lesnar',
-            email: 'lesnar@gmail.com',
-            age: 52,
-            city: 'New Berry'
-        },
-    ]
-const [users, setUsers] = useState([]);
+    //         username: 'Brock',
+    //         email: 'brock@gmail.com',
+    //         age: 22,
+    //         city: 'Old York'
+    //     },
+    //     {
+    //         id: 4,
+    //         username: 'Lesnar',
+    //         email: 'lesnar@gmail.com',
+    //         age: 52,
+    //         city: 'New Berry'
+    //     },
+    // ]
+    const [users, setUsers] = useState([]);
 
-useEffect( ()=> {
-    setTimeout(()=>{
-    setUsers(data);},3000)
-}, []);
-
+    useEffect(() => {
+      axios
+        .get("http://localhost:4000/users")
+        .then((res) => {
+          console.log(res.data);
+          setUsers(res.data);
+        })
+        .catch((err) => {  // Corrected the opening bracket for catch
+          alert("API Server Error");
+          console.log(err);
+        });
+    }, []);
+    
+  
     return (
         <div>     
-        <h1>User Management</h1>
-        <Link to="/pages/AddUser">
+        {/* <h1>User Management</h1> */}
+
+        <div class="flex1">
+        <button class="addB"><Link to="/pages/UserManagement/AddUser">
             Add
-            </Link><br></br>
-            <Link to="/pages/Login">
+            </Link></button>
+            
+        <button class="logB"><Link to="/pages/Login">
             Login
-            </Link>
+            </Link></button>
+            </div>
+           
+    {/* <table class="my_table">
+        
+        <tr>
+            
+          <th>Date</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+          <tr>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+          <td>text</td>
+        </tr>
+      </table> */}
+
+
 
         <ViTable 
         data={users}
@@ -86,16 +185,13 @@ useEffect( ()=> {
             },
             {
               name: "Delete",
-              link: "/UserManagement/delete",
+              link: "/UserManagement/Delete",
               className: "btn btn-danger"
             }
           ]}
-
         />
 
-        <ViTable 
-
-        header={[
+        {/* <ViTable header={[
             {
             "key": "name",
             "name": "Name",
@@ -118,53 +214,8 @@ useEffect( ()=> {
               "name": "Siddhartha",
               "branch": "Patan"
             }
-          ]}
-  
-          />
-        {/* <table>
-        <tr>
-          <th class="text-left">Username</th>
-          <th class="text-left">Email</th>
-          <th>Age</th>
-          <th>City</th>
-          <th>Action</th>        
-        </tr>
-
-        {users.length>0 &&
-        
-        
-            users.map((user,index)=>{
-                return(
-                    <tr key={index}>
-                    <td>{user.username}</td>
-                    <td>{user.email}</td>
-                    <td>{user.age}</td>
-                    <td>{user.city}</td>
-                    <td>
-            <Link to={`/pages/UserManagement/Detail/${user.id}/${user.username}`}> Detail </Link>
-
-            <Link to={`/pages/AddUser/edit/${user.id}`}> Edit </Link>
-
-            <Link className="red" to={`/pages/AddUser/delete/${user.id}`}>
-            Delete
-            </Link>
-                   
-                   
-                    </td>
-                    </tr>
-
-                )
-            })
-        
-        
-        
-}
-{ users.length === 0 &&
-<tr>
-    <td colSpan={5}>No Records Found.</td></tr>
-}
-        
-        </table> */}
+        ]}/>
+       */}
      
         </div>
         );

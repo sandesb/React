@@ -1,8 +1,9 @@
 import {Link} from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ViPassInput from "../components/ViPassInput";
 import ViTextInput from "../components/ViTextInput";
+import ViMessage from "../components/ViMessage";
 
 const Login = () => {
 
@@ -10,7 +11,9 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
   
+
     const handleInputChange = (event) => {
       if(event.target.name === 'email') {
         setEmail(event.target.value);
@@ -23,15 +26,26 @@ const Login = () => {
       let isLogin = false;
       if(email === "admin" && password === "admin") {
         isLogin = true;
+        navigate('/Pages/UserManagement');
       }
   
       if(isLogin) {
         localStorage.setItem('isLogin', '1');
         navigate('/Pages/UserManagement');
       } else {
-        alert('Login failed');
+        // alert('Login failed');
+        setErrorMessage('Invalid Username or Password');
+
       }
     }
+
+useEffect(() => {
+  const isLogin = localStorage.getItem('isLogin');
+  if(isLogin==='1'){
+    navigate('/Pages/UserManagement');
+  console.log("Login component mounted");
+  }
+},[])
 
     return(
         <div>
@@ -39,7 +53,9 @@ const Login = () => {
             <h1>Login</h1>
             <form method="post" action="index.html">
 
-<h1>Dashboard</h1>
+<h1 class="dash">Dashboard</h1>
+{errorMessage && <ViMessage message={errorMessage}/>}
+
 
 {/* <input type="email" name="email" value="email" onblur="field_blur(this, 'email');"  /> */}
 <ViTextInput 

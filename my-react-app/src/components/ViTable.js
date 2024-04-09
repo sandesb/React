@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 const ViTable = (props) => {
     return(
-        <table>
+        <table class="table1"> 
         <tr>
             {
                 props.header &&

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Contact = () => {
+const Counter = () => {
   const [count, setCount] = useState(0);
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
@@ -68,33 +68,49 @@ const Contact = () => {
 
   return (
     <div>
+      
+      <div class="group">      
+        <input 
+          type="text" 
+          class="uname"
+          onChange={handleUsernameChange}
+          value={username} 
+          required
+        />
+        <span class="highlight"></span>
+        {/* <span class="bar"></span> */}
+        <label>Name</label>
+        <button id="save-btn" onClick={save}>SAVE</button>
+     <h4 class="new-um">Saved List</h4>
+      </div>
     <div class="counter-container">
+      <div class="um-flex">
   <div class="um">
-    <h1>Um Counter:</h1>
+    <h1>Um</h1>
     <h2 id="count-el">{count}</h2>
-    <button onClick={increment} class="um-button">Um Bhanyo</button>
+    <button onClick={increment} class="um-button">+</button>
   </div>
 
   <div class="um">
-    <h1>Ah Counter:</h1>
+    <h1>Ah</h1>
     <h2 id="count-el">{count1}</h2>
-    <button onClick={increment1} class="um-button">Ah Bhanyo</button>
+    <button onClick={increment1} class="um-button">+</button>
   </div>
 
   <div class="um">
-    <h1>Like Counter:</h1>
+    <h1>Like</h1>
     <h2 id="count-el">{count2}</h2>
-    <button onClick={increment2} class="um-button">Like Bhanyo</button>
+    <button onClick={increment2} class="um-button">+</button>
   </div>
 
   <div class="um custom">
-    <h1>Custom Counter:</h1>
+    <h1>New</h1>
     {customCounts.map((item, index) => (
       <div key={index}>
-        <h2>{item.word} Counter:</h2>
+        <h2>{item.word}</h2>
         <h2 id="count-el">{item.count}</h2>
         <button onClick={() => incrementCustomCount(index)} className="um-button">
-          {item.word} Bhanyo
+          +
         </button>
       </div>
     ))}
@@ -111,24 +127,10 @@ const Contact = () => {
       </div>
     )}
   </div>
-</div>
 
-
-      <div class="group">      
-        <input 
-          type="text" 
-          class="uname"
-          onChange={handleUsernameChange}
-          value={username} 
-          required
-        />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Name of Speaker</label>
-        <button id="save-btn" onClick={save}>SAVE</button>
-      </div>
-
-      <table class="rep-table">
+  </div>
+<div class="table-flex">
+  <table class="rep-table table1">
         <tr>
           <th class="text-left">Speaker</th>
           <th class="text-left">Um</th>
@@ -152,8 +154,15 @@ const Contact = () => {
           </tr>
         ))}
       </table>
+      </div>
+  
+</div>
+
+
+
+      
     </div>
   );
 };
 
-export default Contact;
+export default Counter;

@@ -9,7 +9,7 @@ const Layout = () => {
             <Header/>
         <div class="flex-wrap">
 
-        <Sidebar/> 
+        {/* <Sidebar/>  */}
 
         <div class="body1">
             
