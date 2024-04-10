@@ -1,15 +1,16 @@
-import { useEffect, useState,useNavigate  } from "react";
+import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import ViTable from "../../components/ViTable";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const UserManagement = () => {
 
   const uuid = uuidv4();
   console.log(uuid);
 
-
+  
     const header = [
         {
             key: "username",
@@ -74,7 +75,7 @@ const UserManagement = () => {
           console.log(err);
         });
     }, []);
-    
+    const notify = () => toast("Wow so easy!");
   
     return (
         <div>     
@@ -89,86 +90,9 @@ const UserManagement = () => {
             Login
             </Link></button>
             </div>
+          <button onClick={notify}>Notify!</button>
            
-    {/* <table class="my_table">
-        
-        <tr>
-            
-          <th>Date</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Status</th>
-        </tr>
-        <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-          <tr>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-          <td>text</td>
-        </tr>
-      </table> */}
-
-
-
+   
         <ViTable 
         data={users}
         header={header}
@@ -180,7 +104,7 @@ const UserManagement = () => {
             },
             {
               name: "Edit",
-              link: "/UserManagement/edit",
+              link: "/UserManagement/EditUser",
               className: "btn"
             },
             {
@@ -191,32 +115,6 @@ const UserManagement = () => {
           ]}
         />
 
-        {/* <ViTable header={[
-            {
-            "key": "name",
-            "name": "Name",
-            },
-            {
-            "key": "branch",
-            "name": "Branch"
-            }
-        ]}
-        data={[
-            {
-              "name": "Everest",
-              "branch": "Baneshwor"
-            },
-            {
-              "name": "Sanima",
-              "branch": "Bouddha"
-            },
-            {
-              "name": "Siddhartha",
-              "branch": "Patan"
-            }
-        ]}/>
-       */}
-     
         </div>
         );
     };

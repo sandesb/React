@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import ViPassInput from "../components/ViPassInput";
 import ViTextInput from "../components/ViTextInput";
 import ViMessage from "../components/ViMessage";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -26,6 +28,16 @@ const Login = () => {
       let isLogin = false;
       if(email === "admin" && password === "admin") {
         isLogin = true;
+        toast.success('🦄 Welcome! Login Successful', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
         navigate('/Pages/UserManagement');
       }
   
@@ -42,6 +54,9 @@ const Login = () => {
 useEffect(() => {
   const isLogin = localStorage.getItem('isLogin');
   if(isLogin==='1'){
+
+  
+
     navigate('/Pages/UserManagement');
   console.log("Login component mounted");
   }
@@ -76,7 +91,7 @@ useEffect(() => {
         class="email"
         value={password} />
 {/* <Link to="/pages/UserManagement"> */}
-<div class="btn-l" onClick={doLogin}>Sign In</div>
+<button onClick={doLogin}>Sign In</button>
             {/* </Link> */}
 
   

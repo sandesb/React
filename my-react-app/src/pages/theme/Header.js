@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
+import ViPassInput from "../../components/ViPassInput";
+import { ToastContainer, toast } from 'react-toastify';
 // import styles from '/templatemo-topic-listing.css';
 
 const Header = () => {
@@ -7,7 +9,17 @@ const Header = () => {
     const navigate = useNavigate();
 
     const logout = () => {
-        alert("logout");
+        alert("Do you really wanna Log Out?");
+        toast.error('🐱‍👤 Successfully Logged Out!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
         localStorage.removeItem('isLogin');
         navigate("/pages/Login")
 

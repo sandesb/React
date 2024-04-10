@@ -6,20 +6,36 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-
-const AddUser = () => {
+const EditUser = () => {
   const navigate = useNavigate();
     const [isSubmitted, setIsSubmitted] = useState(false);
-
-    const [user, setUser] = useState(
-      {
-        username: "",
-        password: "",
+    const {id}=useParams();
+    const {username}=useParams();
+    
+    const [user, setUser] = useState({
+        username:"",
         email:"",
         age:"",
-        city: "",
-      })
+        city:"",
+    
+    });
+    
+     useEffect(()=>{
+        axios
+            .get(`http://localhost:4000/users/${id}`)
+            .then((res) => {
+              console.log(res.data);
+              setUser(res.data);
+            })
+            .catch((err) => {  // Corrected the opening bracket for catch
+              alert("API Server Error");
+              console.log(err);
+            });
+        }, []);
+
 
       const [errorMsg, setErrMsg] = useState({
         username: "",
@@ -50,7 +66,7 @@ const AddUser = () => {
 
       if(validateForm()){
         const item = {...user, id:uuid}
-        toast.success(`New Username: ${user.username} 🦄 Saved!`, {
+        toast.success(`Details of: ${user.username} Changed 📝!`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -61,7 +77,7 @@ const AddUser = () => {
           theme: "colored",
           });
         console.log('User:', item);
-        axios.post('http://localhost:4000/users', item)
+        axios.put(`http://localhost:4000/users/${id}`, item)
         .then(()=>{
           console.log("user saved");
           navigate('/pages/UserManagement');
@@ -74,7 +90,7 @@ const AddUser = () => {
   }
     return (
       <div>
-        <h1>Add User</h1>
+        <h1>Edit User</h1>
        <ViTextInput 
        title="username"
        name="username"
@@ -137,4 +153,4 @@ const AddUser = () => {
     );
 }
 
-export default AddUser;
+export default EditUser;
