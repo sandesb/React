@@ -80,6 +80,9 @@ const ViTable = (props) => {
           }
         
         </table> 
+
+
+
     )
 }
 

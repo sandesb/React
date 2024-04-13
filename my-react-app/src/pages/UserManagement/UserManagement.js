@@ -29,38 +29,7 @@ const UserManagement = () => {
             name: "City",
         }
     ]
-    // const data = [
-    //     {
-    //         id: 1,
-    //         username: 'John',
-    //         email: 'jon@gmail.com',
-    //         age: 25,
-    //         city: 'New York'
-    //     },
-    //     {
-    //         id: 2,
 
-    //         username: 'Cena',
-    //         email: 'cena@gmail.com',
-    //         age: 30,
-    //         city: 'New Jersey'
-    //     },
-    //     {
-    //         id: 3,
-
-    //         username: 'Brock',
-    //         email: 'brock@gmail.com',
-    //         age: 22,
-    //         city: 'Old York'
-    //     },
-    //     {
-    //         id: 4,
-    //         username: 'Lesnar',
-    //         email: 'lesnar@gmail.com',
-    //         age: 52,
-    //         city: 'New Berry'
-    //     },
-    // ]
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -78,42 +47,39 @@ const UserManagement = () => {
     const notify = () => toast("Wow so easy!");
   
     return (
-        <div>     
-        {/* <h1>User Management</h1> */}
+             
 
         <div class="flex1">
-        <button class="addB"><Link to="/pages/UserManagement/AddUser">
-            Add
+        <button class="addB"><Link  className="link" to="/pages/UserManagement/AddUser">
+            ➕ Add User 
             </Link></button>
-            
-        <button class="logB"><Link to="/pages/Login">
-            Login
-            </Link></button>
-            </div>
-          <button onClick={notify}>Notify!</button>
-           
-   
-        <ViTable 
+
+            <ViTable 
         data={users}
         header={header}
         actions={[
             {
-              name: "Detail",
+              name: "View 👀 ",
               link: "/UserManagement/detail",
-              className: "btn btn-default"
+              className: "viewB"
             },
             {
-              name: "Edit",
+              name: "Edit 📝",
               link: "/UserManagement/EditUser",
-              className: "btn"
+              className: "viewE"
             },
             {
-              name: "Delete",
+              name: "Delete 🗑️", 
               link: "/UserManagement/Delete",
-              className: "btn btn-danger"
+              className: "btn btn-outline-danger viewD"
             }
           ]}
         />
+            
+            
+           
+   
+       
 
         </div>
         );

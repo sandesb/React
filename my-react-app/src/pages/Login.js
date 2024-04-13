@@ -24,6 +24,9 @@ const Login = () => {
         setPassword(event.target.value);
       }
     }
+    const doLoginn = () => {
+
+    }
     const doLogin = (e) => {
       let isLogin = false;
       if(email === "admin" && password === "admin") {
@@ -38,15 +41,16 @@ const Login = () => {
           progress: undefined,
           theme: "colored",
           });
-        navigate('/Pages/UserManagement');
+        navigate('/cat');
       }
   
       if(isLogin) {
         localStorage.setItem('isLogin', '1');
-        navigate('/Pages/UserManagement');
+        navigate('/pages/Main');
       } else {
-        // alert('Login failed');
+        alert('Login failed');
         setErrorMessage('Invalid Username or Password');
+        navigate('/Pages/Login');
 
       }
     }
@@ -57,7 +61,7 @@ useEffect(() => {
 
   
 
-    navigate('/Pages/UserManagement');
+    navigate('/pages/Main');
   console.log("Login component mounted");
   }
 },[])
@@ -66,7 +70,7 @@ useEffect(() => {
         <div>
             <div class="box">
             <h1>Login</h1>
-            <form method="post" action="index.html">
+            <form>
 
 <h1 class="dash">Dashboard</h1>
 {errorMessage && <ViMessage message={errorMessage}/>}
@@ -91,6 +95,7 @@ useEffect(() => {
         class="email"
         value={password} />
 {/* <Link to="/pages/UserManagement"> */}
+<br></br>
 <button onClick={doLogin}>Sign In</button>
             {/* </Link> */}
 

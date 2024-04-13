@@ -1,4 +1,9 @@
 import './App.css';
+import './Form.css';
+import './user.css';
+import './card.css';
+
+
 import './pages/theme/styles/bootstrap-icons.css';
 import './pages/theme/styles/bootstrap.min.css';
 import './pages/theme/styles/templatemo-topic-listing.css';
@@ -21,29 +26,41 @@ import EditUser from './pages/UserManagement/EditUser';
 
 
 import PrivateRoute from './routes/PrivateRoute';
+import Main from './pages/Main';
+import Counter1 from './pages/Counter1';
 
 function App() {
-  const notify = () => toast("Wow so easy!");
   return (
     <div>
     <BrowserRouter>
+    
       <Routes> 
+      <Route path="/" element={<Login/> } >
+      
+
+      </Route>
+
+
         <Route path="/" element={<Layout/>}>
-          {/* <Route path="/pages/UserManagement" element={<UserManagement/> } /> */}
+        <Route path="/pages/Main" element={<PrivateRoute component={Main}/> } />
+
           <Route path="/pages/UserManagement" element={<PrivateRoute component={UserManagement}/> } />
           <Route path="/pages/UserManagement/AddUser" element={<PrivateRoute component={AddUser}/>}/>
 
-
           <Route path="/UserManagement/Detail/:id" element={<Detail/> } />
+
           <Route path="/UserManagement/Delete/:id" element={<Delete/> } />
           <Route path="/UserManagement/EditUser/:id" element={<EditUser/>}/>
 
 
           <Route path="/pages/Faq" element={<Faq/> } />
           <Route path="/pages/Counter" element={<Counter/> } />
+          <Route path="/pages/Counter1" element={<Counter1/> } />
+
           <Route path="/pages/Randomizer" element={<Randomizer/> } />
         </Route>
-        <Route path="/pages/Login" element={<Login/> } />
+      <Route path="/pages/Login" element={<Login/> } />
+        
       </Routes>
     </BrowserRouter>
     <ToastContainer
@@ -57,10 +74,12 @@ pauseOnFocusLoss
 draggable
 pauseOnHover
 theme="colored"
-
 />
 
+         
     </div>
+
+
 
     // <div className="App"
     //     <Header/>

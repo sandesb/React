@@ -79,10 +79,9 @@ const Counter = () => {
         />
         <span class="highlight"></span>
         {/* <span class="bar"></span> */}
-        <label>Name</label>
+        <label class="label1">Name</label>
         <button id="save-btn" onClick={save}>SAVE</button>
      <h4 class="new-um">Saved List</h4>
-      </div>
     <div class="counter-container">
       <div class="um-flex">
   <div class="um">
@@ -162,6 +161,8 @@ const Counter = () => {
 
       
     </div>
+    </div>
+
   );
 };
 

@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
+import Body from "../theme/Body";
 const Delete = () =>{
     const navigate = useNavigate();
 
@@ -63,19 +64,26 @@ const deleteUser = () => {
 }
 }
     return (
-        <div>
-            {/* <h1>User Details {id} {username}</h1> */}
-            <h2>Are you sure, You wanna delete?</h2>
+        <div class="flex1 del">
+
+        
+
+            <h2>Are you sure, you wanna delete {user.username} 🥺?</h2>
             <div>Username: {user.username}</div>
             <div>Age: {user.age}</div>
             <div>City: {user.city}</div>
             <div>Email: {user.email}</div>
+            <br></br>
             <div>
-                <button type="button" className="btn btn-danger" onClick={deleteUser}>Yes</button> 
-                <button type="button" className="btn btn-danger" onClick={()=>{navigate('/pages/UserManagement');
-                }}>No</button> 
+            <br></br>
+
+                <button type="button" className="btn btn-danger" onClick={deleteUser}>Damn, Sure! 😈</button> 
+                <button type="button" className="btn button1" onClick={()=>{navigate('/pages/UserManagement');
+                }}>Last Chance 💚</button>        
         </div>
+
         </div>
+        
 
         );
     };

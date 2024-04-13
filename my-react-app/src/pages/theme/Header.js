@@ -25,16 +25,6 @@ const Header = () => {
 
     }
 
-    // const navbar = document.getElementsByClassName("navbar");
-    // let top = navbar.offsetTop;
-    // function stickynavbar() {
-    //   if (window.scrollY >= top) {    
-    //     navbar.className.add('sticky');
-    //   } else {
-    //     navbar.className.remove('sticky');    
-    //   }
-    // }
-    // window.addEventListener('scroll', stickynavbar);
     
 
 
@@ -57,24 +47,47 @@ const Header = () => {
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
+                            <Link to="/pages/Main">
                                 <a class="nav-link click-scroll" href="#section_1">Home</a>
-                            </li>
+                            </Link>
 
+                            </li>
                             <li class="nav-item dropdown">
                             <Link to="/pages/UserManagement">
                                 <a class="nav-link dropdown-toggle" aria-expanded="false">Speakers</a>
                                 </Link>
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="topics-listing.html">Topics Listing</a></li>
+                                    <li>
+                                    <Link to="/pages/UserManagement">
+                                        <a class="dropdown-item" href="topics-listing.html">1st Sem</a>
+                                        </Link>
+                                        </li>
 
-                                    <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
+
+                                    <li>
+                                    <Link to="/pages/UserManagement">
+                                        <a class="dropdown-item" href="topics-listing.html">3rd Sem</a>
+                                        </Link>
+                                        </li>
+
+                                        <li>
+                                    <Link to="/pages/UserManagement">
+                                        <a class="dropdown-item" href="topics-listing.html">5th Sem</a>
+                                        </Link>
+                                        </li>
+
+                                        <li>
+                                    <Link to="/pages/Counter">
+                                        <a class="dropdown-item" href="topics-listing.html">6th Sem</a>
+                                        </Link>
+                                        </li>
                                 </ul>
                             </li>
 
                            
     
                             <li class="nav-item">
-                <Link to="/pages/Counter">
+                <Link to="/pages/Counter1">
                                 <a class="nav-link click-scroll" >Counter</a>
                                 </Link>  </li>
 

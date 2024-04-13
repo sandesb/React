@@ -2,6 +2,7 @@ const ViPassInput = (props) => {
     return (
        <div>
              <input 
+             className="form-control" required="" 
                type="password"
                onChange={props.handleInputChange}
                name={props.name}

@@ -1,156 +1,155 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 import ViTextInput from "../../components/ViTextInput";
 import ViPassInput from "../../components/ViPassInput";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { v4 as uuidv4 } from 'uuid';
-import axios from "axios";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 const EditUser = () => {
   const navigate = useNavigate();
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const {id}=useParams();
-    const {username}=useParams();
-    
-    const [user, setUser] = useState({
-        username:"",
-        email:"",
-        age:"",
-        city:"",
-    
-    });
-    
-     useEffect(()=>{
-        axios
-            .get(`http://localhost:4000/users/${id}`)
-            .then((res) => {
-              console.log(res.data);
-              setUser(res.data);
-            })
-            .catch((err) => {  // Corrected the opening bracket for catch
-              alert("API Server Error");
-              console.log(err);
-            });
-        }, []);
+  const { id } = useParams();
 
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    email: "",
+    age: "",
+    city: "",
+  });
 
-      const [errorMsg, setErrMsg] = useState({
-        username: "",
-        password: "",
-        email: "",
-        age: "",
-        city: "",
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/users/${id}`)
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((err) => {
+        alert("API Server Error");
+        console.log(err);
       });
+  }, [id]);
 
-      const validateForm = () => {
-        return (
-          user.username === '' ? false :
-          user.password === '' ? false :
-          user.email === '' ? false :
-          user.age === '' ? false :
-          user.city === '' ? false : true
-        );
-      };
-      
-    const handleInputChange = (event) => {
-      setUser({...user, [event.target.name]: event.target.value})
-    }
+  const handleInputChange = (event) => {
+    setUser({ ...user, [event.target.name]: event.target.value });
+  };
 
-    const saveForm = () => {
+  const validateForm = () => {
+    return (
+      user.username !== "" &&
+      user.password !== "" &&
+      user.email !== "" &&
+      user.age !== "" &&
+      user.city !== ""
+    );
+  };
 
-      
-  const uuid = uuidv4();
+  const saveForm = (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
 
-      if(validateForm()){
-        const item = {...user, id:uuid}
-        toast.success(`Details of: ${user.username} Changed 📝!`, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
+    if (validateForm()) {
+      const uuid = uuidv4();
+      const updatedUser = { ...user, id: uuid };
+
+      axios
+        .put(`http://localhost:4000/users/${id}`, updatedUser)
+        .then(() => {
+          toast.success(`Details of: ${updatedUser.username} Changed 📝!`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
           });
-        console.log('User:', item);
-        axios.put(`http://localhost:4000/users/${id}`, item)
-        .then(()=>{
-          console.log("user saved");
-          navigate('/pages/UserManagement');
-        }).catch((err)=>{
+          navigate('/pages/UserManagement'); // Navigate after successful update
+        })
+        .catch((err) => {
           console.log(err);
           alert("SERVER ERROR");
-        })
-        // navigate('/pages/UserManagement');
+        });
+    } else {
+      setIsSubmitted(true); // Mark the form as submitted to show error messages
     }
-  }
-    return (
-      <div>
+  };
+
+  return (
+    <div className="flex5">
+      <form className="form" onSubmit={saveForm}>
         <h1>Edit User</h1>
-       <ViTextInput 
-       title="username"
-       name="username"
-       value={user.username}
-       handleInputChange={handleInputChange}
-       isSubmitted={isSubmitted}
-       errMessage={errorMsg.username}/>
+        <label htmlFor="username">Full Name:</label>
+        <ViTextInput
+          title="username"
+          name="username"
+          value={user.username}
+          handleInputChange={handleInputChange}
+          isSubmitted={isSubmitted}
+          errMessage=""
+        />
 
-       <div>
-       <ViPassInput 
-       title="password"
-       name="password"
-       value={user.password}
-       handleInputChange={handleInputChange}
-       isSubmitted={isSubmitted}
-       errMessage={errorMsg.password}/>
-       </div>
-       
-        <div>
-          <input type="text"
-          onChange={handleInputChange}
-          placeholder="email"
-          name="email"
-          value={user.email}
-          />
-            {isSubmitted &&  user.email === '' && 
-            <span class="danger"> Email is required</span>
-            }
+        <label htmlFor="password">Password:</label>
+        <ViPassInput
+          title="password"
+          name="password"
+          value={user.password}
+          handleInputChange={handleInputChange}
+          isSubmitted={isSubmitted}
+          errMessage=""
+        />
 
-        </div>
-        <div>
-          <input type="text"
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="text"
+            name="email"
+            value={user.email}
             onChange={handleInputChange}
-            placeholder="age"
+            className="form-control"
+          />
+          {isSubmitted && user.email === "" && (
+            <span className="danger">Email is required</span>
+          )}
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="age">Age:</label>
+          <input
+            type="text"
             name="age"
-            required
-          value={user.age}
-          />
-  { isSubmitted &&  user.age === '' && 
-            <span class="danger"> Age is required</span>
-            }
-
-        </div>
-        <div>
-          <input type="text"
+            value={user.age}
             onChange={handleInputChange}
-            placeholder="city"
-            name="city"
-            required
-          value={user.city}
+            className="form-control"
           />
-     { isSubmitted &&  user.city === '' && 
-            <span class="danger"> City is required</span>
-            }
-
+          {isSubmitted && user.age === "" && (
+            <span className="danger">Age is required</span>
+          )}
         </div>
-        <button class="btn-margin"onClick={saveForm}>Save</button>
 
-      </div>
-    );
-}
+        <div className="form-group">
+          <label htmlFor="city">City:</label>
+          <input
+            type="text"
+            name="city"
+            value={user.city}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+          {isSubmitted && user.city === "" && (
+            <span className="danger">City is required</span>
+          )}
+        </div>
+
+        <button type="submit " className="btn-margin button1">
+          Save
+        </button>
+      </form>
+    </div>
+  );
+};
 
 export default EditUser;
