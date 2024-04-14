@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -7,10 +8,9 @@ const Footer = () => {
                 <div class="row">
 
                     <div class="col-lg-3 col-12 mb-4 pb-2">
-                        <a class="navbar-brand mb-2" href="index.html">
-                            <i class="bi-back"></i>
-                            <span class="vcolor">Virinchi</span>
-                        </a>
+                        <Link to="/pages/Main"><a class="navbar-brand mb-2">
+                            <img class="logo2" src="/v.png"></img>
+                        </a> </Link>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-6">

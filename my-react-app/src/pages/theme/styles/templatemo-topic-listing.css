@@ -4,7 +4,10 @@ TemplateMo 590 topic listing
 
 https://templatemo.com/tm-590-topic-listing
 
-*/
+
+
+
+
 
 /*---------------------------------------
   CUSTOM PROPERTIES ( VARIABLES )             
@@ -496,7 +499,7 @@ strong {
 .navbar .dropdown-item:active,
 .navbar .dropdown-item:focus, 
 .navbar .dropdown-item:hover {
-  background: transparent;
+  background: black;
   color: var(--primary-color);
 }
 
@@ -521,93 +524,9 @@ strong {
 @media screen and (min-width: 992px) {
   .navbar .dropdown:hover .dropdown-menu {
     opacity: 1;
-    margin-top: 0;
+    margin-top: 20px;
     pointer-events: auto;
   }
-}
-
-.navbar-icon {
-  background: var(--white-color);
-  border-radius: var(--border-radius-large);
-  display: inline;
-  margin-right: 22%;
-  font-size: var(--h5-font-size);
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.navbar-icon:hover {
-  background: var(--primary-color);
-  color: var(--white-color);
-}
-
-.navbar-toggler {
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  margin: 0;
-  width: 30px;
-  height: 35px;
-  outline: none;
-}
-
-.navbar-toggler:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-  background: transparent;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before,
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
-  transition: top 300ms 50ms ease, -webkit-transform 300ms 350ms ease;
-  transition: top 300ms 50ms ease, transform 300ms 350ms ease;
-  transition: top 300ms 50ms ease, transform 300ms 350ms ease, -webkit-transform 300ms 350ms ease;
-  top: 0;
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
-  transform: rotate(45deg);
-}
-
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
-  transform: rotate(-45deg);
-}
-
-.navbar-toggler .navbar-toggler-icon {
-  background: var(--white-color);
-  transition: background 10ms 300ms ease;
-  display: block;
-  width: 30px;
-  height: 2px;
-  position: relative;
-}
-
-.navbar-toggler .navbar-toggler-icon:before,
-.navbar-toggler .navbar-toggler-icon:after {
-  transition: top 300ms 350ms ease, -webkit-transform 300ms 50ms ease;
-  transition: top 300ms 350ms ease, transform 300ms 50ms ease;
-  transition: top 300ms 350ms ease, transform 300ms 50ms ease, -webkit-transform 300ms 50ms ease;
-  position: absolute;
-  right: 0;
-  left: 0;
-  background: var(--white-color);
-  width: 30px;
-  height: 2px;
-  content: '';
-}
-
-.navbar-toggler .navbar-toggler-icon::before {
-  top: -8px;
-}
-
-.navbar-toggler .navbar-toggler-icon::after {
-  top: 8px;
 }
 
 
@@ -1122,35 +1041,49 @@ blockquote {
   }
   
   .navbar {
-    background-color: var(--secondary-color);
+    border-color: rgb(126, 126, 126) !important;
   }
 
-  .navbar-nav .dropdown-menu {
-    position: relative;
-    left: 10px;
-    opacity: 1;
-    pointer-events: auto;
-    max-width: 155px;
-    margin-top: 10px;
-    margin-bottom: 15px;
+  /* Custom styles for the navbar */
+.navbar-brand {
+  margin-right: 15px;
+}
+
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 991.98px) {
+  /* Hide text of nav links and show icons */
+  .navbar-nav .nav-link {
+      padding: 0.5rem;
+      font-size: 0; /* Hide text */
   }
 
-  .navbar-expand-lg .navbar-nav {
-    padding-bottom: 20px;
+  /* Show icons using pseudo-elements or Font Awesome icons */
+  .navbar-nav .nav-link::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      font-size: 1.25rem; /* Adjust size as needed */
+      margin-right: 5px; /* Add space between icon and other elements */
   }
+}
 
-  .navbar-expand-lg .navbar-nav .nav-link {
-    padding: 0;
-  }
+/* Styling for the logout button */
+.logButton {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
 
-  .nav-tabs .nav-link:first-child {
-    margin-right: 5px;
-  }
+/* Example logout button hover effect */
+.logButton:hover {
+  background-color: #ddd;
+}
 
-  .nav-tabs .nav-link {
-    font-size: var(--copyright-font-size);
-    padding: 10px;
-  }
 
   .featured-section {
     border-radius: 0 0 80px 80px;

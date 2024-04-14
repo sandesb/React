@@ -7,7 +7,8 @@ import ViMessage from "../components/ViMessage";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
+
+const Login1 = () => {
 
 
     const navigate = useNavigate();
@@ -41,16 +42,15 @@ const Login = () => {
           progress: undefined,
           theme: "colored",
           });
-        navigate('/cat');
       }
   
       if(isLogin) {
         localStorage.setItem('isLogin', '1');
         navigate('/pages/Main');
       } else {
-        alert('Login failed');
+        alert('Login failed: Invalid Username or Password');
         setErrorMessage('Invalid Username or Password');
-        navigate('/Pages/Login');
+        // navigate('/');
 
       }
     }
@@ -68,15 +68,22 @@ useEffect(() => {
 
     return(
         <div>
-            <div class="box">
-            <h1>Login</h1>
-            <form>
 
-<h1 class="dash">Dashboard</h1>
-{errorMessage && <ViMessage message={errorMessage}/>}
+            <body id="top">
+
+        <main>
+
+            
+            <div id="login">
+                <form>
+                    <img class="logo1" src="/images.png"/>
+                  <h1>Sign In</h1>
 
 
-{/* <input type="email" name="email" value="email" onblur="field_blur(this, 'email');"  /> */}
+
+                  {errorMessage && <ViMessage message={errorMessage}/>}
+
+
 <ViTextInput 
         title="Email" 
         name="email" 
@@ -94,17 +101,21 @@ useEffect(() => {
         handleInputChange={handleInputChange}
         class="email"
         value={password} />
-{/* <Link to="/pages/UserManagement"> */}
-<br></br>
-<button onClick={doLogin}>Sign In</button>
-            {/* </Link> */}
+                  {/* <input type="text" placeholder="Username"/>
+                  <input type="password" placeholder="Password"/> */}
+                  <button  onClick={doLogin}>Sign in</button>
 
-  
+                </form>
+              </div>
+                
 
-</form>
-</div>
+        </main>
+
+
+
+    </body>
         </div>
-    )
+    );
 }
 
-export default Login;
+export default Login1;

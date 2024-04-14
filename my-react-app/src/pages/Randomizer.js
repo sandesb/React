@@ -64,9 +64,8 @@ const Randomizer = () => {
     };
 
     return (
-        <div>
-            <br></br>
-            <div class="flex-wrap2">
+        <div class="flex-wrap3">
+            
             <div className="spinner">
                 <div className="spinner__body"></div>
                 <button className="spinner__start-button" onClick={startRandomization}>
@@ -79,7 +78,7 @@ const Randomizer = () => {
                     ))}
                 </div>
             </div>
-            </div>
+            
         </div>
     );
 };

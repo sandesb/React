@@ -79,8 +79,8 @@ const EditUser = () => {
   };
 
   return (
-    <div className="flex5">
-      <form className="form" onSubmit={saveForm}>
+    <div className="flex5 form-m">
+      <form className="form " onSubmit={saveForm}>
         <h1>Edit User</h1>
         <label htmlFor="username">Full Name:</label>
         <ViTextInput

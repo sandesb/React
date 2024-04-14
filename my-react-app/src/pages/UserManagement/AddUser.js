@@ -77,7 +77,7 @@ const AddUser = () => {
 
   return (
     
-    <div className="flex5 form-m">
+    <div className="flex5 form-m " >
 
       <form className="form" onSubmit={saveForm}>
         <h2>Add New User</h2>

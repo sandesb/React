@@ -2,6 +2,8 @@ import './App.css';
 import './Form.css';
 import './user.css';
 import './card.css';
+import './login.css';
+import './nav.css';
 
 
 import './pages/theme/styles/bootstrap-icons.css';
@@ -18,16 +20,16 @@ import UserManagement from './pages/UserManagement/UserManagement';
 import AddUser from './pages/UserManagement/AddUser'
 import Counter from './pages/Counter';
 import Randomizer from './pages/Randomizer';
-import Login from './pages/Login';
 import Faq from './pages/Faq';
 import Detail from './pages/UserManagement/Detail';
 import Delete from './pages/UserManagement/Delete';
 import EditUser from './pages/UserManagement/EditUser';
 
-
 import PrivateRoute from './routes/PrivateRoute';
 import Main from './pages/Main';
 import Counter1 from './pages/Counter1';
+import Login1 from './pages/Login1';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
@@ -35,15 +37,11 @@ function App() {
     <BrowserRouter>
     
       <Routes> 
-      <Route path="/" element={<Login/> } >
-      
+      <Route path="/" element={<Login1/> } >
 
       </Route>
-
-
         <Route path="/" element={<Layout/>}>
         <Route path="/pages/Main" element={<PrivateRoute component={Main}/> } />
-
           <Route path="/pages/UserManagement" element={<PrivateRoute component={UserManagement}/> } />
           <Route path="/pages/UserManagement/AddUser" element={<PrivateRoute component={AddUser}/>}/>
 
@@ -58,8 +56,9 @@ function App() {
           <Route path="/pages/Counter1" element={<Counter1/> } />
 
           <Route path="/pages/Randomizer" element={<Randomizer/> } />
+          <Route path="/pages/AboutUs" element={<AboutUs/> } />
+
         </Route>
-      <Route path="/pages/Login" element={<Login/> } />
         
       </Routes>
     </BrowserRouter>

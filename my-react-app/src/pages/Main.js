@@ -13,18 +13,7 @@ const Main = () => {
 
                             <h2 class="newcolor text-center ">- Starter Pack for Public Speaking -</h2>
 
-                          {/* <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text bi-search" id="basic-addon1">
-                                        
-                                    </span>
-
-                                    <input name="keyword" type="search" class="form-control" id="keyword" 
-                                    placeholder="Design, Code, Marketing, Finance ..." aria-label="Search"/>
-
-                                    <button type="submit" class="form-control">Search</button>
-                                </div>
-                            </form> */}
+                    
                         </div>
 
                     </div>
@@ -33,13 +22,13 @@ const Main = () => {
 
 
 
-            <section class="featured-section">
-                <div class="container">
-                    <div class="row justify-content-center">
+            <section class="featured-section ">
+                <div class="container ">
+                    <div class="row justify-content-center ">
 
-                        <div class="col-lg-4 col-12 mb-4 mb-lg-0">
-                            <div class="custom-block bg-white shadow-lg">
-                                    <div class="d-flex">
+                        <div class="col-lg-4 col-12 mb-4 mb-lg-0 ">
+                            <div class="custom-block bg-white shadow-lg mt-4 ">
+                                    <div class="d-flex ">
                                         <div>
                                             <h5 class="mb-2 newcolor">What We Do?</h5>
 
@@ -53,9 +42,9 @@ const Main = () => {
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-12">
+                        <div class="col-lg-6 col-12 mt-4 ">
                             <div class="custom-block custom-block-overlay">
-                                <div class="d-flex flex-column h-100">
+                                <div class="d-flex flex-column h-100 ">
                                     <img src="/publics.png" class="custom-block-image img-fluid" alt=""/>
 
                                     <div class="custom-block-overlay-text d-flex">

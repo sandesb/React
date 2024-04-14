@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Faq = () => {
     const [hour, setHour] = useState(0);
@@ -36,10 +38,30 @@ const Faq = () => {
 
     function start() {
         setIsRunning(true);
+        toast.info('😎 Apna Time Aagaya!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
     }
 
     function pause() {
         setIsRunning(false);
+        toast.warning('🥶 No no no, wey weyy waittt', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
     }
 
     function reset() {
@@ -47,6 +69,16 @@ const Faq = () => {
         setHour(0);
         setMinute(0);
         setSecond(0);
+        toast.error('💀 Khatam! Tata! Goodbye! Gaya! ', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
         
     }
 
@@ -55,21 +87,21 @@ const Faq = () => {
     }
 
     return (
-        <div>
-            <h1>Timer</h1>
+        <div class="flex-wrap timer">
             {/* <img className="club" src="/club1.png" alt="club"></img> */}
 
-            <div class="flex-wrap timer">
+            <h1>Timer:</h1>
+            <div>
                 <span id="hour">{returnData(hour)}</span>:<span id="minute">{returnData(minute)}</span>:
                 <span id="second">{returnData(second)}</span>
+                </div>
+
+            <div class="flex-wrap">
+            <button type="button"  class="timer-button" onClick={start} disabled={isRunning} name="start">▶️</button>
+            <button type="button"  class="timer-button" onClick={pause} disabled={!isRunning} name="pause">⏸</button>
+            <button type="button"  class="timer-button" onClick={reset} name="reset">⏹</button>
             </div>
 
-            <br />
-            <div class="flex-wrap">
-            <button type="button"  class="timer-button" onClick={start} disabled={isRunning} name="start">start</button>
-            <button type="button"  class="timer-button" onClick={pause} disabled={!isRunning} name="pause">pause</button>
-            <button type="button"  class="timer-button" onClick={reset} name="reset">reset</button>
-            </div>
         </div>
     );
 };

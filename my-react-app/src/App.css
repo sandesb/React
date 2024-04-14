@@ -28,6 +28,9 @@ justify-content: center;
     text-align: left;
     color:#696969;
     }
+    .logo2{
+      margin-left: 18%;
+    }
 
 }
 
@@ -64,8 +67,52 @@ justify-content: center;
       text-align: left;
       color:#696969;
       }
+      .spinner {
+        height: 300px !important;
+        width: 300px !important;
+        min-height: 300px !important;
+        min-width: 300px !important;
+      }
+      .logo2{
+        margin-left: 18%;
+      }
 
 }
+
+
+@media only screen and (max-width: 350px) {
+  .counter-container {
+flex-direction: column;
+justify-content: center;
+  }
+  
+  .plus-button{
+    max-width: 10px;
+  }
+
+  .um-flex {
+  max-width: 60px;
+
+  }
+  .new-um{
+    visibility: hidden;
+  }
+  .table-flex {
+   
+    max-width:6px;
+    margin-left: 50%;
+    font-family: arial;
+    text-align: left;
+    color:#696969;
+    }
+    .table-flex th {
+      max-width:45px;
+      font-family: arial;
+      text-align: left;
+      color:#696969;
+      }
+     
+    }
 .flex6{
   display:flex;
   margin-top: 4%;
@@ -85,7 +132,11 @@ html {
   height: 100%;
 }
 
-
+.svg-icon {
+  fill: #B02B2B;/* Change the fill color */
+  width: 32px; /* Optional: Set width */
+  height: 32px; /* Optional: Set height */
+}
 body {
   width: 100%;
   height: 100%;
@@ -126,20 +177,7 @@ body {
   margin-right: 0; /* Remove margin-right for the logout button */
 }
 
-.nav-menu ul {
-  display: flex; /* Set display to flex */
-  list-style-type: none; /* Remove default list styles */
-  padding: 0; /* Remove default padding */
-}
 
-.nav-menu .nav-item {
-  margin-right: 20px; /* Add some spacing between menu items */
-}
-
-/* Optional: Align items vertically centered */
-.nav-menu ul {
-  align-items: center;
-}
 .vlogo{
   width: 10px; /* Set the desired width */
   height: auto;
@@ -153,6 +191,11 @@ body {
 .flex-wrap {
   display: flex;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 2%;
+  /* margin-left: 4%; */
+  /* margin-bottom: 5%; */
 }
 
 
@@ -206,6 +249,15 @@ body {
   margin-top: 10%;
   margin-left: 60%;
 }
+.flex-wrap3 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  margin: 4% 0 20% 0 ;
+
+}
 
 .um {
   border: .2px solid gray;
@@ -258,6 +310,7 @@ font-family: var(--title-font-family);
   font-weight: 700;
   color: white;
   line-height: 26px;
+  margin-right: 30px;
 }
 .um-button {
   margin-top: 10%;
@@ -315,7 +368,10 @@ font-family: var(--title-font-family);
 }
 
 .timer-button{
-  margin-right: 10%;
+  margin-right: 5%;
+  width: 100px;
+  font-size: 60%;
+  border-radius: 20px;
 }
 .uname {
   width: 34%;
@@ -391,7 +447,7 @@ a {
 }
 /* 
 h1 {
-  color: #3C416C; 
+  color: #b02b2b; 
   margin-top: 10px;
   margin-bottom: 10px;
 } */
@@ -460,7 +516,7 @@ input:focus     { outline:none; }
 input:focus ~ label, input:valid ~ label    {
   top:-30px;
   font-size:15px;
-  color:#3C416C;
+  color:#b02b2b;
 }
 
 /* BOTTOM BARS ================================= */
@@ -472,7 +528,7 @@ input:focus ~ label, input:valid ~ label    {
   left:-90%;
   bottom:1px; 
   position:absolute;
-  background:#3C416C; 
+  background:#b02b2b; 
   transition:0.2s ease all; 
   -moz-transition:0.2s ease all; 
   -webkit-transition:0.2s ease all;
@@ -544,9 +600,9 @@ input[type=number]::-webkit-outer-spin-button {
 .spinner__body {
   position: absolute;
   border-top: 200px solid transparent;
-  border-right: 200px solid #3C416C;
-  border-bottom: 200px solid #3C416C;
-  border-left: 200px solid #3C416C;
+  border-right: 200px solid #b02b2b;
+  border-bottom: 200px solid #b02b2b;
+  border-left: 200px solid #b02b2b;
   z-index: 200;
 }
 
@@ -562,7 +618,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: bold;
   font-size: 64px;
   color: #f5f5f5;
-  background-color: #3C416C;
+  background-color: #b02b2b;
   outline: none;
   border: none;
   user-select: none;
@@ -574,16 +630,16 @@ input[type=number]::-webkit-outer-spin-button {
 .spinner__start-button:hover {
   height: 150px;
   width: 150px;
-  color:#3C416C;
-  background-color: #72b3f9;
+  color:#b02b2b;
+  background-color: #F3F4F6;
   box-shadow: 0px 0px 44px rgba(0, 157, 255, 0.25);
 }
 
 .spinner__start-button:active {
   height: 135px;
   width: 135px;
-  color: #3C416C;
-  background-color: #3C416C;
+  color: #b02b2b;
+  background-color: #b02b2b;
   box-shadow: none;
   animation: shaking .15s ease-in-out infinite;
 }
@@ -597,7 +653,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-family: 'Dosis', sans-serif;
   font-size: 48px;
   font-weight: bold;
-  color: #3C416C;
+  color: #b02b2b;
   background: #f5f5f5;
   border-radius: 36px;
   text-align: center;
@@ -612,7 +668,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .spinner__input:focus {
-  color: #3C416C;
+  color: #b02b2b;
 }
 
 .spinner__plate {
@@ -635,7 +691,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-family: 'Dosis', sans-serif;
   font-weight: bold;
   font-size: 48px;
-  color: #3C416C;
+  color: #b02b2b;
   text-align: center;
   transform-origin: 50% 100%;
   z-index: 10;
@@ -911,6 +967,9 @@ color:#696969;
 }
 .logo1{
   width: 28%;
+}
+.logo2{
+  width: 60%;
 }
 .newcolor{
   color:#6c757d;
