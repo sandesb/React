@@ -1,18 +1,21 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2';
 
 const AddUser = () => {
   const navigate = useNavigate();
-
+  
+  const { values } = useParams();
+ 
   const [user, setUser] = useState({
     username: "",
     password: "",
     email: "",
-    age: "",
+    sem: "",
     city: "",
   });
 
@@ -20,10 +23,11 @@ const AddUser = () => {
     username: "",
     password: "",
     email: "",
-    age: "",
+    sem: "",
     city: "",
   });
-
+  const uuid = uuidv4();
+  const item = { ...user, id: uuid };
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (event) => {
@@ -35,51 +39,50 @@ const AddUser = () => {
     return !Object.values(user).some((value) => value === "");
   };
 
-  const saveForm = (event) => {
-    event.preventDefault();
-    
-    if (validateForm()) {
-      const uuid = uuidv4();
-      const item = { ...user, id: uuid };
+  const { semesterKey } = useParams();
+  const [selectedSemester, setSelectedSemester] = useState(semesterKey || 'firstsem'); // Default to 'firstsem' if semesterKey is undefined
 
-      axios
-        .post('http://localhost:4000/users', item)
-        .then(() => {
-          toast.success(`New Username: ${user.username} 🦄 Saved!`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          });
-          console.log('User:', item);
-          navigate('/pages/UserManagement');
-        })
-        .catch((err) => {
-          console.log(err);
-          alert("SERVER ERROR");
+  const handleSemesterChange = (event) => {
+    setSelectedSemester(event.target.value);
+  };
+  const semesters = ['firstsem', 'secondsem', 'thirdsem', 'fourthsem'];
+  const saveForm = async (event) => {
+    event.preventDefault();
+
+    if (!validateForm()) {
+      
+    try {
+
+
+      await axios.post(`http://localhost:4000/${selectedSemester}`, item);
+      navigate(`/`);
+      Swal.fire({
+        icon: "success",
+        title: `${user.username} added to ${selectedSemester}!`,
+        text: "Look in the Table.",
+        showConfirmButton: false,
+        timer: 5000
         });
-    } else {
-      setErrorMsg({
-        username: user.username === "" ? "Username is required" : "",
-        password: user.password === "" ? "Password is required" : "",
-        email: user.email === "" ? "Email is required" : "",
-        age: user.age === "" ? "Age is required" : "",
-        city: user.city === "" ? "City is required" : "",
-      });
+    } catch (error) {
+      console.error('Error saving user:', error);
+      alert('Failed to save user. Please try again.');
+    }
+      return;
     }
 
-    setIsSubmitted(true);
+   
+
   };
+
+  
+
+  
 
   return (
     
     <div className="flex5 form-m " >
 
-      <form className="form" onSubmit={saveForm}>
+      <form className="form">
         <h2>Add New User</h2>
         <div className="form-group">
           <label htmlFor="username">Full Name:</label>
@@ -97,10 +100,10 @@ const AddUser = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Symbol No.</label>
           <div className="relative">
             <input
-              type="password"
+              type="text"
               name="password"
               value={user.password}
               onChange={handleInputChange}
@@ -112,7 +115,7 @@ const AddUser = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="email">Email address:</label>
+          <label htmlFor="email">Email Address:</label>
           <div className="relative">
             <input
               type="email"
@@ -127,22 +130,25 @@ const AddUser = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="age">Age:</label>
-          <div className="relative">
-            <input
-              type="text"
-              name="age"
-              value={user.age}
-              onChange={handleInputChange}
-              className="form-control"
-            />
-            <i className="fa fa-calendar">📅</i>
-          </div>
-          {isSubmitted && errorMsg.age && <span className="danger">{errorMsg.age}</span>}
-        </div>
+          <label htmlFor="age">Semester:</label>
+          <i className="fa fa-calendar">📅</i>
+          <select
+          id="semester"
+          name="sem"
+          value={selectedSemester}
+          onChange={handleSemesterChange}
+          className="form-control"
+        >
+          {semesters.map((semester) => (
+            <option key={semester} value={semester}>
+              {semester}
+            </option>
+          ))}
+        </select>
+      </div>
 
         <div className="form-group">
-          <label htmlFor="city">City:</label>
+          <label htmlFor="city">Contact No:</label>
           <div className="relative">
             <input
               type="text"
@@ -151,13 +157,13 @@ const AddUser = () => {
               onChange={handleInputChange}
               className="form-control"
             />
-            <i className="fa fa-map-marker">🏙</i>
+            <i className="fa fa-map-marker">📞</i>
           </div>
           {isSubmitted && errorMsg.city && <span className="danger">{errorMsg.city}</span>}
         </div>
 
         <div className="tright">
-          <button className="btn-margin button1" type="submit">Save</button>
+          <button className="btn-margin button1" onClick={saveForm}>Save</button>
         </div>
       </form>
     </div>

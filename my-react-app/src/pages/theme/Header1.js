@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React, { useState,useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import {Link} from "react-router-dom";
 import {toast } from 'react-toastify';
 import Swal from 'sweetalert2';
@@ -15,7 +16,7 @@ const Header1 = () => {
       buttonColorDark: '#CD181F',
       buttonColorLight: '#F3F4F6',
       saveInCookies: false,
-      label: '🌚',
+      label: '🔮',
       autoMatchOsTheme: true
     });
 
@@ -69,7 +70,16 @@ const Header1 = () => {
         setIsActive(!isActive);
     };
 
-    
+    const [values, setValues] = useState([]);
+  const history = useNavigate();
+
+  const handleItemClick = (value) => {
+    // Add the clicked value to the state
+    setValues((prevValues) => [...prevValues, value]);
+
+    // Navigate to UserManagement component with values as URL parameters
+    navigate(`/pages/UserManagement/${value}`);
+  };
 
     return (
         
@@ -87,12 +97,12 @@ const Header1 = () => {
 
 
                   <li class="dropdown">
-                            <Link to="/pages/UserManagement" className="nav-link dropdown-toggle">Speakers </Link>
+                            <Link to="/pages/UserManagement/1" className="nav-link dropdown-toggle">Speakers </Link>
                             <ul className="dropdown-menu dropdown-menu-light">
-                                <li><Link to="/pages/UserManagement" >1st Sem</Link></li>
-                                <li><Link to="/pages/UserManagement" >3rd Sem</Link></li>
-                                <li><Link to="/pages/UserManagement" >5th Sem</Link></li>
-                                <li><Link to="/pages/UserManagement">6th Sem</Link></li>
+                                <li value="1" onClick={() => handleItemClick("1")}><Link to="/pages/UserManagement" >1st Sem</Link></li>
+                                <li value="2" onClick={() => handleItemClick("2")}><Link to="/pages/UserManagement" >3rd Sem</Link></li>
+                                <li value="3" onClick={() => handleItemClick("3")}><Link to="/pages/UserManagement" >5th Sem</Link></li>
+                                <li value="4" onClick={() => handleItemClick("4")}><Link to="/pages/UserManagement">6th Sem</Link></li>
                             </ul>
                         </li>
                   <li>
@@ -107,11 +117,36 @@ const Header1 = () => {
                   <li>
                     <Link to="/pages/AboutUs" className="nav-link click-scroll">About Us</Link>
                   </li>
+
+                 
                 
                 </ul>
-                <div className="d-none d-lg-block">
-                  <button className="logButton" onClick={logout}>LogOut</button>
+
+                <ul>
+
+                <li class="dropdown">
+                            <a class=" dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            🧾</a>
+
+                            <ul class="dropdown-menu btn-secondary">
+                                <Link to="/pages/MainN"><li><button  class=" text-danger" >Nepali</button></li>
+                                </Link>
+
+                                <Link to="/pages/MainD"><li><button  class=" text-danger" type="button">German</button>
+                                </li></Link>
+                                
+
+                                <Link to="/pages/MainZ"><li><button  class="text-danger" type="button">GenZ</button></li>
+                                </Link>
+
+                            </ul>
+                        </li>
+                        <div className=" d-none d-lg-block mt-3">
+                  <button className="logButton hate" onClick={logout}>LogOut</button>
                 </div>
+                </ul>
+                
+                
                 <div className="hamburger" onClick={toggleNav}>
                   {/* Hamburger icon with three lines */}
                   <span className="line"></span>

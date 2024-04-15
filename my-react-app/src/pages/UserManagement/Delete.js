@@ -10,7 +10,7 @@ const Delete = () =>{
     const navigate = useNavigate();
 
 const {id}=useParams();
-const {username}=useParams();
+const {semesterKey}=useParams();
 
 
 
@@ -24,7 +24,7 @@ const [user, setUser] = useState({
 
  useEffect(()=>{ 
     axios
-    .get(`http://localhost:4000/users/${id}`)
+    .get(`http://localhost:4000/${semesterKey}/${id}`)
     .then((res) => {
       console.log(res.data);
       setUser(res.data);
@@ -51,7 +51,7 @@ const deleteUser = () => {
     if(confirm){
         notify();
 
-        axios.delete(`http://localhost:4000/users/${id}`)
+        axios.delete(`http://localhost:4000/${semesterKey}/${id}`)
         .then((res) => {
 
             navigate('/pages/UserManagement');

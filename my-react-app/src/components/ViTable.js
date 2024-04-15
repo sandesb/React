@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 const ViTable = (props) => {
+  const { semesterKey } = useParams();
+
     return(
         <table class="table1"> 
         <tr>
@@ -20,15 +22,12 @@ const ViTable = (props) => {
               props.data.map((user, index) => {
                 return (
                   <tr key={index}>
-                    {/* body starts */}
                     { props.header.map((header, index) => {
                       return (
                         <td key={index}>{user[header.key]}</td>
                       )
                     })}
-                    {/* body ends */}
 
-                    {/* action starts */}
                     { props?.actions && props.actions.length > 0 &&
                       <td>
                         {
@@ -40,39 +39,11 @@ const ViTable = (props) => {
                         }
                       </td>
                     }
-                    {/* action ends */}
                   </tr>
                 )
               })
             }
 
-        {/* {props.users.length>0 &&      
-            props.users.map((user,index)=>{
-                return(
-                    <tr key={index}>
-                    <td>{user.username}</td>
-                    <td>{user.email}</td>
-                    <td>{user.age}</td>
-                    <td>{user.city}</td>
-                    <td>
-            <Link to={`/pages/UserManagement/Detail/${user.id}/${user.username}`}> Detail </Link>
-
-            <Link to={`/pages/AddUser/edit/${user.id}`}> Edit </Link>
-
-            <Link className="red" to={`/pages/AddUser/delete/${user.id}`}>
-            Delete
-            </Link>
-                   
-                   
-                    </td>
-                    </tr>
-
-                )
-            })
-        
-        
-        
-} */}
 {props.data && props.data.length === 0 && 
           <tr>
             <td colSpan={4}>No records found</td>

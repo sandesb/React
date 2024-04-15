@@ -51,14 +51,14 @@ function App() {
 
 
 
-          <Route path="/pages/UserManagement" element={<PrivateRoute component={UserManagement}/> } />
+          <Route path="/pages/UserManagement/:values" element={<PrivateRoute component={UserManagement}/> } />
           <Route path="/pages/UserManagement/AddUser" element={<PrivateRoute component={AddUser}/>}/>
 
-          <Route path="/UserManagement/Detail/:id" element={<Detail/> } />
 
-          <Route path="/UserManagement/Delete/:id" element={<Delete/> } />
-          <Route path="/UserManagement/EditUser/:id" element={<EditUser/>}/>
+          <Route path="/UserManagement/Delete/:semesterKey/:id" element={<Delete/> } />
+          <Route path="/UserManagement/EditUser/:semesterKey/:id" element={<EditUser/>}/>
 
+          <Route path="/UserManagement/Detail/:semesterKey/:id" element={<Detail/> } />
 
           <Route path="/pages/Faq" element={<Faq/> } />
           <Route path="/pages/Counter" element={<Counter/> } />

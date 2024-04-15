@@ -10,6 +10,8 @@ import ViPassInput from "../../components/ViPassInput";
 const EditUser = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { semesterKey } = useParams();
+
 
   const [user, setUser] = useState({
     username: "",
@@ -23,7 +25,7 @@ const EditUser = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/users/${id}`)
+      .get(`http://localhost:4000/${semesterKey}/${id}`)
       .then((res) => {
         setUser(res.data);
       })
@@ -55,7 +57,7 @@ const EditUser = () => {
       const updatedUser = { ...user, id: uuid };
 
       axios
-        .put(`http://localhost:4000/users/${id}`, updatedUser)
+        .put(`http://localhost:4000/${semesterKey}/${id}`, updatedUser)
         .then(() => {
           toast.success(`Details of: ${updatedUser.username} Changed 📝!`, {
             position: "top-right",

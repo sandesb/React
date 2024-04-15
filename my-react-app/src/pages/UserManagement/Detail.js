@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Detail = () =>{
+  const { semesterKey } = useParams();
+
 const {id}=useParams();
 const {username}=useParams();
 
@@ -17,7 +19,7 @@ const [user, setUser] = useState({
 
  useEffect(()=>{
     axios
-        .get(`http://localhost:4000/users/${id}`)
+        .get(`http://localhost:4000/${semesterKey}/${id}`)
         .then((res) => {
           console.log(res.data);
           setUser(res.data);
