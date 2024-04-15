@@ -2,6 +2,11 @@
   margin: 0;
   padding: 0;
 }
+.linky{
+  text-decoration: none;
+}
+
+
 @media only screen and (max-width: 1200px) {
   .counter-container {
 flex-direction: column;
@@ -973,7 +978,12 @@ color:#696969;
 }
 .newcolor{
   color:#6c757d;
+
   font-size: 18px;
+}
+.flexbg{
+  background:#ffffffb4;
+
 }
 .vcolor{
   color:#CD181F;

@@ -48,6 +48,7 @@ const Faq = () => {
             progress: undefined,
             theme: "colored",
             });
+            
     }
 
     function pause() {

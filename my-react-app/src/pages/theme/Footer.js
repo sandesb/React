@@ -1,6 +1,36 @@
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Footer = () => {
+    const nep = () =>{
+        Swal.fire({
+            position: "top-center",
+            icon: "info",
+            title: "Welcome to प्रकाशन क्लब!",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
+
+    const de = () =>{
+        Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Welcome to Veröffentlichungsclub!",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
+
+    const gen = () =>{
+        Swal.fire({
+            position: "top-center",
+            icon: "warning",
+            title: "Welcome to YAP Club!",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
     return (
 
 <footer class="site-footer section-padding">
@@ -40,13 +70,13 @@ const Footer = () => {
 
                         <p class="text-white d-flex mb-1">
                             <a href="tel: 305-240-9671" class="site-footer-link">
-                                305-240-9671
+                                9880088279
                             </a>
                         </p>
 
                         <p class="text-white d-flex">
-                            <a href="mailto:info@company.com" class="site-footer-link">
-                                info@company.com
+                            <a href="virinchicollege.edu.np" class="site-footer-link">
+                                virinchicollege.edu.np
                             </a>
                         </p>
                     </div>
@@ -54,18 +84,23 @@ const Footer = () => {
                     <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            English</button>
+                            Language</button>
 
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button">Thai</button></li>
+                                <Link to="/pages/MainN"><li><button onClick={nep} class="dropdown-item" type="button">Nepali</button></li>
+                                </Link>
 
-                                <li><button class="dropdown-item" type="button">Myanmar</button></li>
+                                <Link to="/pages/MainD"><li><button  onClick={de}class="dropdown-item" type="button">German</button>
+                                </li></Link>
+                                
 
-                                <li><button class="dropdown-item" type="button">Arabic</button></li>
+                                <Link to="/pages/MainZ"><li><button  onClick={gen}class="dropdown-item" type="button">GenZ</button></li>
+                                </Link>
+
                             </ul>
                         </div>
 
-                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.</p>
+                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2024.</p>
                         
                     </div>
 

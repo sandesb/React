@@ -1,16 +1,54 @@
 import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {Link} from "react-router-dom";
 import {toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import Darkmode from 'darkmode-js';
+
 // import styles from '/templatemo-topic-listing.css';
 
 const Header1 = () => {
 
+    
+  useEffect(() => {
+    const darkmode = new Darkmode({
+      buttonColorDark: '#CD181F',
+      buttonColorLight: '#F3F4F6',
+      saveInCookies: false,
+      label: '🌚',
+      autoMatchOsTheme: true
+    });
+
+    darkmode.showWidget(); // Show dark mode widget immediately
+
+    return () => {
+    };
+  }, []); // Empty dependency array to run this effect only once on mount
     const navigate = useNavigate();
 
+    
+
     const logout = () => {
-        alert("Do you really wanna Log Out?");
-        toast.error('🐱‍👤 Successfully Logged Out!', {
+      Swal.fire({
+        title: "Are you sure, you wanna LogOut?",
+        text: "🥺 tusi jaa rahe ho? tusi matt jao.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('isLogin');
+          navigate("/")
+          Swal.fire({
+          icon: "success",
+          title: "Logged Out!",
+          text: "See ya Chump.",
+          showConfirmButton: false,
+          timer: 1500
+          });
+          toast.error('🐱‍👤 Successfully Logged Out!', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -20,8 +58,10 @@ const Header1 = () => {
             progress: undefined,
             theme: "colored",
             });
-        localStorage.removeItem('isLogin');
-        navigate("/")
+        }
+      });
+       
+       
     }
     const [isActive, setIsActive] = useState(false);
 
@@ -29,10 +69,12 @@ const Header1 = () => {
         setIsActive(!isActive);
     };
 
+    
+
     return (
         
             <div>
-              <nav className="navbar ">
+              <nav className="navbar  " >
                 <div className="logo">
                   <img src="/images.png" alt="logo" />
                 </div>
@@ -63,7 +105,7 @@ const Header1 = () => {
                     <Link to="/pages/Randomizer" className="nav-link click-scroll">Randomizer</Link>
                   </li>
                   <li>
-                    <Link to="/pages/ContactUs" className="nav-link click-scroll">About Us</Link>
+                    <Link to="/pages/AboutUs" className="nav-link click-scroll">About Us</Link>
                   </li>
                 
                 </ul>

@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
 import {toast } from 'react-toastify';
+import Darkmode from 'darkmode-js';
+
 // import styles from '/templatemo-topic-listing.css';
 
 const Header = () => {
-
     const navigate = useNavigate();
+    
 
     const logout = () => {
+
         alert("Do you really wanna Log Out?");
         toast.error('🐱‍👤 Successfully Logged Out!', {
             position: "top-right",
@@ -24,7 +27,6 @@ const Header = () => {
 
     }
 
-    
 
 
 

@@ -1,20 +1,17 @@
 import {Link} from "react-router-dom";
-
-const Main = () => {
-
+const MainD = () => {
     return (
         <div>
 
-            
 <main>
 <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-8 col-12 mx-auto">
-                            <h1 class="vcolor text-center">Publication Club</h1>
+                            <h1 class="vcolor text-center">Veröffentlichungsclub</h1>
 
-                            <h2 class="newcolor text-center ">- Starter Pack for Public Speaking -</h2>
+                            <h2 class="newcolor text-center ">- Startpaket für öffentliches Sprechen -</h2>
 
                     
                         </div>
@@ -30,17 +27,17 @@ const Main = () => {
                     <div class="row justify-content-center ">
 
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0 ">
-                            <div class="custom-block shadow-lg mt-4 flexbg">
-                                    <div class="d-flex">
+                            <div class="custom-block bg-white shadow-lg mt-4 ">
+                                    <div class="d-flex ">
                                         <div>
-                                            <h5 class="mb-2 newcolor">What We Do?</h5>
+                                            <h5 class="mb-2 newcolor">Was machen wir?</h5>
 
-                                            <p class="mb-0">Well, we've mastered the intricate dance of 'doing... nothing at all</p>
+                                            <p class="mb-0">Nun, wir haben den komplizierten Tanz des 'Nichtstuns... überhaupt nichts' gemeistert.</p>
                                         </div>
 
                                     </div>
 
-                                    <img src="/undraw.svg" class="custom-block-image img-fluid" alt=""/>
+                                    <img src="/undraw_online_ad_re_ol62.png" class="custom-block-image img-fluid" alt=""/>
                              
                             </div>
                         </div>
@@ -52,17 +49,17 @@ const Main = () => {
 
                                     <div class="custom-block-overlay-text d-flex">
                                         <div>
-                                            <h5 class="text-white mb-2">Public Speaking</h5>
+                                            <h5 class="text-white mb-2">Öffentliches Sprechen</h5>
 
-                                            <p class="text-white"> Reach out to us at Virinchi College to learn more about our Public Speaking programs. </p>
+                                            <p class="text-white">Kontaktieren Sie uns am Virinchi College, um mehr über unsere Programme zum öffentlichen Sprechen zu erfahren.</p>
 
-                                           <Link className="linky" to="/pages/AboutUs"> <h href="topics-detail.html" class="custom-btn vcolor mt-2 mt-lg-3">Learn More</h>
-                                           </Link></div>
+                                            <Link className="linky" to="/pages/AboutUs"><a href="topics-detail.html" class="custom-btn vcolor mt-2 mt-lg-3">Erfahren Sie mehr</a>
+                                            </Link> </div>
 
                                     </div>
 
                                     <div class="social-share d-flex">
-                                        <p class="text-white me-4">Share:</p>
+                                        <p class="text-white me-4">Teilen:</p>
 
                                         <ul class="social-icon"/>
                                             <li class="social-icon-item">
@@ -86,7 +83,7 @@ const Main = () => {
                     <div class="row">
 
                         <div class="col-lg-6 col-12">
-                            <h2 class="mb-4">Frequently Asked Questions</h2>
+                            <h2 class="mb-4">Häufig gestellte Fragen</h2>
                         </div>
 
                         <div class="clearfix"></div>
@@ -100,13 +97,13 @@ const Main = () => {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is Topic Listing?
+                                        Was ist Thema-Listing?
                                         </button>
                                     </h2>
 
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            Topic Listing is free Bootstrap 5 CSS template. <strong>You are not allowed to redistribute this template</strong> on any other template collection website without our permission. Please contact TemplateMo for more detail. Thank you.
+                                            Thema-Listing ist eine kostenlose Bootstrap 5 CSS-Vorlage. <strong>Sie dürfen diese Vorlage nicht auf anderen Vorlagensammlungs-Websites ohne unsere Erlaubnis weiterverteilen.</strong> Kontaktieren Sie TemplateMo für weitere Details. Danke!
                                         </div>
                                     </div>
                                 </div>
@@ -114,13 +111,13 @@ const Main = () => {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How to find a topic?
+                                        Wie finde ich ein Thema?
                                     </button>
                                     </h2>
 
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can search on Google with <strong>keywords</strong> such as templatemo portfolio, templatemo one-page layouts, photography, digital marketing, etc.
+                                            Suchen Sie einfach auf Google nach <strong>Schlüsselwörtern</strong> wie templatemo portfolio, templatemo Einseitenlayouts, Fotografie, digitales Marketing usw.
                                         </div>
                                     </div>
                                 </div>
@@ -128,13 +125,13 @@ const Main = () => {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingThree">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Does it need to paid?
+                                        Muss ich dafür bezahlen?
                                     </button>
                                     </h2>
 
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            Sie können dies mit benutzerdefiniertem CSS oder durch Überschreiben unserer Standardvariablen ändern. Es ist auch erwähnenswert, dass fast jedes HTML in den <code>.accordion-body</code> gehen kann, obwohl die Übergänge das Überlaufen begrenzen.
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +147,7 @@ const Main = () => {
                     <div class="row">
 
                         <div class="col-lg-12 col-12 text-center">
-                            <h2 class="mb-5">Get in touch</h2>
+                            <h2 class="mb-5">Kontakt aufnehmen</h2>
                         </div>
 
                         <div class="col-lg-5 col-12 mb-4 mb-lg-0">
@@ -158,14 +155,14 @@ const Main = () => {
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mb-3 mb-lg- mb-md-0 ms-auto">
-                            <h4 class="mb-3">Head office</h4>
+                            <h4 class="mb-3">Hauptquartier</h4>
 
-                            <p>Bay St &amp;, Larkin St, San Francisco, CA 94109, United States</p>
+                            <p>Bay St &amp;, Larkin St, San Francisco, CA 94109, Vereinigte Staaten</p>
 
                             <hr/>
 
                             <p class="d-flex align-items-center mb-1">
-                                <span class="me-2">Phone</span>
+                                <span class="me-2">Telefon</span>
 
                                 <a href="tel: 305-240-9671" class="site-footer-link">
                                     305-240-9671
@@ -173,7 +170,7 @@ const Main = () => {
                             </p>
 
                             <p class="d-flex align-items-center">
-                                <span class="me-2">Email</span>
+                                <span class="me-2">E-Mail</span>
 
                                 <a href="mailto:info@company.com" class="site-footer-link">
                                     info@company.com
@@ -182,14 +179,14 @@ const Main = () => {
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mx-auto">
-                            <h4 class="mb-3">Dubai office</h4>
+                            <h4 class="mb-3">Dubai Büro</h4>
 
-                            <p>Burj Park, Downtown Dubai, United Arab Emirates</p>
+                            <p>Burj Park, Downtown Dubai, Vereinigte Arabische Emirate</p>
 
                             <hr/>
 
                             <p class="d-flex align-items-center mb-1">
-                                <span class="me-2">Phone</span>
+                                <span class="me-2">Telefon</span>
 
                                 <a href="tel: 110-220-3400" class="site-footer-link">
                                     110-220-3400
@@ -197,7 +194,7 @@ const Main = () => {
                             </p>
 
                             <p class="d-flex align-items-center">
-                                <span class="me-2">Email</span>
+                                <span class="me-2">E-Mail</span>
 
                                 <a href="mailto:info@company.com" class="site-footer-link">
                                     info@company.com
@@ -217,4 +214,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default MainD;

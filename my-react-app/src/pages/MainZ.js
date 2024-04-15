@@ -1,20 +1,16 @@
-import {Link} from "react-router-dom";
-
-const Main = () => {
-
+const MainZ = () => {
     return (
         <div>
 
-            
 <main>
 <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-8 col-12 mx-auto">
-                            <h1 class="vcolor text-center">Publication Club</h1>
+                            <h1 class="vcolor text-center">Yapper's Club</h1>
 
-                            <h2 class="newcolor text-center ">- Starter Pack for Public Speaking -</h2>
+                            <h2 class="newcolor text-center ">- Lit Start for Public Speaking -</h2>
 
                     
                         </div>
@@ -30,17 +26,17 @@ const Main = () => {
                     <div class="row justify-content-center ">
 
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0 ">
-                            <div class="custom-block shadow-lg mt-4 flexbg">
-                                    <div class="d-flex">
+                            <div class="custom-block bg-white shadow-lg mt-4 ">
+                                    <div class="d-flex ">
                                         <div>
-                                            <h5 class="mb-2 newcolor">What We Do?</h5>
+                                            <h5 class="mb-2 newcolor">What's the Vibes?</h5>
 
-                                            <p class="mb-0">Well, we've mastered the intricate dance of 'doing... nothing at all</p>
+                                            <p class="mb-0">Yo, we've mastered the intricate dance of 'doing... nada</p>
                                         </div>
 
                                     </div>
 
-                                    <img src="/undraw.svg" class="custom-block-image img-fluid" alt=""/>
+                                    <img src="/undraw_online_ad_re_ol62.png" class="custom-block-image img-fluid" alt=""/>
                              
                             </div>
                         </div>
@@ -52,12 +48,12 @@ const Main = () => {
 
                                     <div class="custom-block-overlay-text d-flex">
                                         <div>
-                                            <h5 class="text-white mb-2">Public Speaking</h5>
+                                            <h5 class="text-white mb-2">Pub Speak</h5>
 
-                                            <p class="text-white"> Reach out to us at Virinchi College to learn more about our Public Speaking programs. </p>
+                                            <p class="text-white"> Hit us up at Virinchi College to learn more about our Public Speaking programs. </p>
 
-                                           <Link className="linky" to="/pages/AboutUs"> <h href="topics-detail.html" class="custom-btn vcolor mt-2 mt-lg-3">Learn More</h>
-                                           </Link></div>
+                                            <a href="topics-detail.html" class="custom-btn vcolor mt-2 mt-lg-3">Get the Scoop</a>
+                                        </div>
 
                                     </div>
 
@@ -86,7 +82,7 @@ const Main = () => {
                     <div class="row">
 
                         <div class="col-lg-6 col-12">
-                            <h2 class="mb-4">Frequently Asked Questions</h2>
+                            <h2 class="mb-4">FAQs, Fam</h2>
                         </div>
 
                         <div class="clearfix"></div>
@@ -100,13 +96,13 @@ const Main = () => {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is Topic Listing?
+                                        What's Topic Listing?
                                         </button>
                                     </h2>
 
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            Topic Listing is free Bootstrap 5 CSS template. <strong>You are not allowed to redistribute this template</strong> on any other template collection website without our permission. Please contact TemplateMo for more detail. Thank you.
+                                            Topic Listing is free Bootstrap 5 CSS template. <strong>You can't drop this template</strong> on any other template collection website without our say-so. Holla at TemplateMo for more deets. Thanks!
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +116,7 @@ const Main = () => {
 
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can search on Google with <strong>keywords</strong> such as templatemo portfolio, templatemo one-page layouts, photography, digital marketing, etc.
+                                            Just Google it, duh! <strong>Keywords</strong> like templatemo portfolio, templatemo one-page layouts, photography, digital marketing, etc., will do the trick.
                                         </div>
                                     </div>
                                 </div>
@@ -128,13 +124,13 @@ const Main = () => {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingThree">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Does it need to paid?
+                                        Is it gonna cost me?
                                     </button>
                                     </h2>
 
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            You can tweak any of this with custom CSS or doing your own thing. Oh, and almost any HTML works in the <code>.accordion-body</code>, but the transition has its limits.
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +146,7 @@ const Main = () => {
                     <div class="row">
 
                         <div class="col-lg-12 col-12 text-center">
-                            <h2 class="mb-5">Get in touch</h2>
+                            <h2 class="mb-5">Hit Us Up</h2>
                         </div>
 
                         <div class="col-lg-5 col-12 mb-4 mb-lg-0">
@@ -158,9 +154,9 @@ const Main = () => {
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mb-3 mb-lg- mb-md-0 ms-auto">
-                            <h4 class="mb-3">Head office</h4>
+                            <h4 class="mb-3">HQ</h4>
 
-                            <p>Bay St &amp;, Larkin St, San Francisco, CA 94109, United States</p>
+                            <p>Bay St &amp;, Larkin St, SF, CA 94109, United States</p>
 
                             <hr/>
 
@@ -182,9 +178,9 @@ const Main = () => {
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mx-auto">
-                            <h4 class="mb-3">Dubai office</h4>
+                            <h4 class="mb-3">Dubai Digs</h4>
 
-                            <p>Burj Park, Downtown Dubai, United Arab Emirates</p>
+                            <p>Burj Park, Downtown Dubai, UAE</p>
 
                             <hr/>
 
@@ -217,4 +213,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default MainZ;

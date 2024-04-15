@@ -30,6 +30,9 @@ import Main from './pages/Main';
 import Counter1 from './pages/Counter1';
 import Login1 from './pages/Login1';
 import AboutUs from './pages/AboutUs';
+import MainZ from './pages/MainZ';
+import MainN from './pages/MainN';
+import MainD from './pages/MainD';
 
 function App() {
   return (
@@ -42,6 +45,12 @@ function App() {
       </Route>
         <Route path="/" element={<Layout/>}>
         <Route path="/pages/Main" element={<PrivateRoute component={Main}/> } />
+        <Route path="/pages/MainZ" element={<PrivateRoute component={MainZ}/> } />
+        <Route path="/pages/MainN" element={<PrivateRoute component={MainN}/> } />
+        <Route path="/pages/MainD" element={<PrivateRoute component={MainD}/> } />
+
+
+
           <Route path="/pages/UserManagement" element={<PrivateRoute component={UserManagement}/> } />
           <Route path="/pages/UserManagement/AddUser" element={<PrivateRoute component={AddUser}/>}/>
 

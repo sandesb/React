@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Counter1 = () => {
   const [umCount, setUmCount] = useState(0);
@@ -35,7 +38,13 @@ const Counter1 = () => {
       soCount,
       otherCounts: customCounts.map(item => ({ word: item.word, count: item.count }))
     };
-  
+    Swal.fire({
+      position: "top-center",
+      icon: "success",
+      title: `${newEntry.name}'s Counts Saved In The Table Below.`,
+      showConfirmButton: false,
+      timer: 1500
+    });
     setPreviousEntries((prevEntries) => [...prevEntries, newEntry]);
     setUsername('');
     setUmCount(0);
@@ -56,6 +65,16 @@ const Counter1 = () => {
       ]);
       setNewFillerWord('');
       setShowInput(false);
+      toast.info(`🦄 Custom Word '${newFillerWord}' Added!`, {
+        position: "top-right",
+        autoClose: 8000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
     }
   };
 
