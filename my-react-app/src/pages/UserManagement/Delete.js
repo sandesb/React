@@ -54,7 +54,7 @@ const deleteUser = () => {
         axios.delete(`http://localhost:4000/${semesterKey}/${id}`)
         .then((res) => {
 
-            navigate('/pages/UserManagement');
+            navigate(`/pages/UserManagement/1`);
 
             
           })

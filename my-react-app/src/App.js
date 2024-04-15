@@ -33,6 +33,7 @@ import AboutUs from './pages/AboutUs';
 import MainZ from './pages/MainZ';
 import MainN from './pages/MainN';
 import MainD from './pages/MainD';
+import Sort from './pages/UserManagement/Sort';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="/UserManagement/EditUser/:semesterKey/:id" element={<EditUser/>}/>
 
           <Route path="/UserManagement/Detail/:semesterKey/:id" element={<Detail/> } />
+          <Route path="/pages/UserManagement/Sort/:semesterKey" element={<Sort/> } />
 
           <Route path="/pages/Faq" element={<Faq/> } />
           <Route path="/pages/Counter" element={<Counter/> } />
@@ -66,6 +68,7 @@ function App() {
 
           <Route path="/pages/Randomizer" element={<Randomizer/> } />
           <Route path="/pages/AboutUs" element={<AboutUs/> } />
+
 
         </Route>
         

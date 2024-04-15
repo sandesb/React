@@ -26,7 +26,7 @@ const UserManagement = () => {
     const header = [
         {
             key: "username",
-            name: "Username",
+            name: "Student",
         },
         {
             key: "email",
@@ -34,11 +34,11 @@ const UserManagement = () => {
         },
         {
             key: "age",
-            name: "Age",
+            name: "Matric No.",
         },
         {
             key: "city",
-            name: "City",
+            name: "Contact",
         }
     ]
 
@@ -59,16 +59,22 @@ const UserManagement = () => {
           });
       }
     }, [semesterKey]); // Trigger the effect when semesterKey changes
-
     return (
              
 
         <div class="flex1">
-        <button class="addB"><Link  className="link" to="/pages/UserManagement/AddUser">
-            ➕ Add User 
+            <p className="mt-5">{semesterKey}</p>
+
+          <div className="mb-4">
+        <button class="addB mx-4"><Link  className="link" to="/pages/UserManagement/AddUser">
+            ➕ Add Speakers 
             </Link></button>
 
-            <p>{semesterKey}</p>
+            <button class="addB"><Link  className="link" to={`/pages/UserManagement/Sort/${semesterKey}`}>
+            Publish List 💻
+            </Link></button> 
+            </div>
+
 
             <ViTable 
         data={users}
@@ -93,9 +99,7 @@ const UserManagement = () => {
           ]}
         />
             
-            <button class="addB"><Link  className="link" to="/pages/UserManagement/AddUser">
-            ➕ Add User 
-            </Link></button>  
+            
            
    
        

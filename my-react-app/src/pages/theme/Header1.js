@@ -100,9 +100,9 @@ const Header1 = () => {
                             <Link to="/pages/UserManagement/1" className="nav-link dropdown-toggle">Speakers </Link>
                             <ul className="dropdown-menu dropdown-menu-light">
                                 <li value="1" onClick={() => handleItemClick("1")}><Link to="/pages/UserManagement" >1st Sem</Link></li>
-                                <li value="2" onClick={() => handleItemClick("2")}><Link to="/pages/UserManagement" >3rd Sem</Link></li>
-                                <li value="3" onClick={() => handleItemClick("3")}><Link to="/pages/UserManagement" >5th Sem</Link></li>
-                                <li value="4" onClick={() => handleItemClick("4")}><Link to="/pages/UserManagement">6th Sem</Link></li>
+                                <li value="2" onClick={() => handleItemClick("2")}><Link to="/pages/UserManagement" >2nd Sem</Link></li>
+                                <li value="3" onClick={() => handleItemClick("3")}><Link to="/pages/UserManagement" >3rd Sem</Link></li>
+                                <li value="4" onClick={() => handleItemClick("4")}><Link to="/pages/UserManagement">4th Sem</Link></li>
                             </ul>
                         </li>
                   <li>

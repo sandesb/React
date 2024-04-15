@@ -69,7 +69,7 @@ const EditUser = () => {
             progress: undefined,
             theme: "colored",
           });
-          navigate('/pages/UserManagement'); // Navigate after successful update
+          navigate('/'); // Navigate after successful update
         })
         .catch((err) => {
           console.log(err);

@@ -55,7 +55,7 @@ const AddUser = () => {
 
 
       await axios.post(`http://localhost:4000/${selectedSemester}`, item);
-      navigate(`/`);
+      navigate(`/pages/UserManagement/AddUser`);
       Swal.fire({
         icon: "success",
         title: `${user.username} added to ${selectedSemester}!`,
@@ -100,7 +100,7 @@ const AddUser = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Symbol No.</label>
+          <label htmlFor="password">Matric No.</label>
           <div className="relative">
             <input
               type="text"
