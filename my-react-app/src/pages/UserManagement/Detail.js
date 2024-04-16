@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import axios from "axios";
+import { getUserById } from "../../service/user-management.service";
 
 const Detail = () =>{
   const { semesterKey } = useParams();
@@ -18,20 +19,13 @@ const [user, setUser] = useState({
 });
 
  useEffect(()=>{
-    axios
-        .get(`http://localhost:4000/${semesterKey}/${id}`)
-        .then((res) => {
-          console.log(res.data);
-          setUser(res.data);
-        })
-        .catch((err) => {  // Corrected the opening bracket for catch
-          alert("API Server Error");
-          console.log(err);
-        });
-    }, []);
-//     const newUser = data.find((obj)=>obj.id.toString()===id.toString())
-//     setUser(newUser);
-// }, []);
+  getUserById(id).then((data) => {
+    setUser(data);
+  }).catch((err) => {
+    alert("API server error");
+    console.log(err);
+  });
+}, []);
 
 
  // Function to generate a random number between min and max (inclusive)

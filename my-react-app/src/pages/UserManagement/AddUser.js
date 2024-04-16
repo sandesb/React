@@ -1,89 +1,121 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
-import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Swal from 'sweetalert2';
+import { addUser, getUserById, updateUser } from "../../service/user-management.service";
 
 const AddUser = () => {
   const navigate = useNavigate();
-  
-  const { values } = useParams();
- 
+  const { id } = useParams();
   const [user, setUser] = useState({
     username: "",
     password: "",
     email: "",
-    sem: "",
+    sem: "", // This will hold numeric value (1, 2, 3, 4) for semester
     city: "",
   });
-
-  const [errorMsg, setErrorMsg] = useState({
-    username: "",
-    password: "",
-    email: "",
-    sem: "",
-    city: "",
-  });
-  const uuid = uuidv4();
-  const item = { ...user, id: uuid };
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Load user data if editing existing user (using id from URL params)
+  useEffect(() => {
+    if (id) {
+      getUserById(id)
+        .then((item) => {
+          setUser({
+            username: item.username,
+            password: item.password,
+            email: item.email,
+            sem: item.sem,
+            city: item.city,
+          });
+        })
+        .catch((err) => {
+          console.log("API server error:", err);
+          alert("API server error");
+        });
+    }
+  }, [id]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
 
-  const validateForm = () => {
-    return !Object.values(user).some((value) => value === "");
-  };
-
-  const { semesterKey } = useParams();
-  const [selectedSemester, setSelectedSemester] = useState(semesterKey || 'firstsem'); // Default to 'firstsem' if semesterKey is undefined
-
-  const handleSemesterChange = (event) => {
-    setSelectedSemester(event.target.value);
-  };
-  const semesters = ['firstsem', 'secondsem', 'thirdsem', 'fourthsem'];
-  const saveForm = async (event) => {
+  const saveForm = (event) => {
     event.preventDefault();
-
-    if (!validateForm()) {
-      
-    try {
-
-
-      await axios.post(`http://localhost:4000/${selectedSemester}`, item);
-      navigate(`/pages/UserManagement/AddUser`);
-      Swal.fire({
-        icon: "success",
-        title: `${user.username} added to ${selectedSemester}!`,
-        text: "Look in the Table.",
-        showConfirmButton: false,
-        timer: 5000
-        });
-    } catch (error) {
-      console.error('Error saving user:', error);
-      alert('Failed to save user. Please try again.');
+    if (validateForm()) {
+      const userData = { ...user, sem: parseInt(user.sem, 10) }; // Convert sem to integer
+      if (id) {
+        // Update existing user
+        updateUser(id, userData)
+          .then(() => {
+            console.log("User updated successfully");
+            navigate('/');
+          })
+          .catch((err) => {
+            console.log("Update error:", err);
+            alert("SERVER ERROR");
+          });
+      } else {
+        // Add new user
+        const newUser = { ...userData, id: uuidv4() };
+        addUser(newUser)
+          .then(() => {
+            console.log("New user added successfully");
+            navigate('/');
+          })
+          .catch((err) => {
+            console.log("Add user error:", err);
+            alert("SERVER ERROR");
+          });
+      }
     }
-      return;
-    }
-
-   
-
   };
 
-  
+  const validateForm = () => {
+    let isValid = true;
+    const errors = {
+      username: "",
+      password: "",
+      email: "",
+      sem: "",
+      city: "",
+    };
 
-  
+    if (!user.username.trim()) {
+      errors.username = 'Username is required';
+      isValid = false;
+    }
+
+    if (!user.email.trim()) {
+      errors.email = 'Email is required';
+      isValid = false;
+    } else if (!isValidEmail(user.email.trim())) {
+      errors.email = 'Email is not valid';
+      isValid = false;
+    }
+
+    if (!user.sem.trim()) {
+      errors.sem = 'Semester is required';
+      isValid = false;
+    }
+
+    if (!user.city.trim()) {
+      errors.city = 'City is required';
+      isValid = false;
+    }
+
+    return isValid;
+  };
+
+  const isValidEmail = (email) => {
+    // Basic email validation using regex
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
   return (
-    
-    <div className="flex5 form-m " >
-
-      <form className="form">
-        <h2>Add New User</h2>
+    <div className="flex5 form-m">
+      <form className="form" onSubmit={saveForm}>
+        <h2>{id ? 'Edit User' : 'Add New User'}</h2>
         <div className="form-group">
           <label htmlFor="username">Full Name:</label>
           <div className="relative">
@@ -96,12 +128,12 @@ const AddUser = () => {
             />
             <i className="fa fa-user">👦</i>
           </div>
-          {isSubmitted && errorMsg.username && <span className="danger">{errorMsg.username}</span>}
+          {isSubmitted && !user.username.trim() && <span className="danger">Username is required</span>}
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Matric No.</label>
-          <div className="relative">
+        <label htmlFor="password">Matric No.</label>
+        <div className="relative">
             <input
               type="text"
               name="password"
@@ -111,8 +143,8 @@ const AddUser = () => {
             />
             <i className="fa fa-lock">🔒</i>
           </div>
-          {isSubmitted && errorMsg.password && <span className="danger">{errorMsg.password}</span>}
-        </div>
+          </div>
+
 
         <div className="form-group">
           <label htmlFor="email">Email Address:</label>
@@ -126,29 +158,30 @@ const AddUser = () => {
             />
             <i className="fa fa-envelope">📧</i>
           </div>
-          {isSubmitted && errorMsg.email && <span className="danger">{errorMsg.email}</span>}
+          {isSubmitted && !user.email.trim() && <span className="danger">Email is required</span>}
+          {isSubmitted && user.email.trim() && !isValidEmail(user.email.trim()) && <span className="danger">Email is not valid</span>}
         </div>
 
         <div className="form-group">
-          <label htmlFor="age">Semester:</label>
+          <label htmlFor="semester">Semester:</label>
           <i className="fa fa-calendar">📅</i>
           <select
-          id="semester"
-          name="sem"
-          value={selectedSemester}
-          onChange={handleSemesterChange}
-          className="form-control"
-        >
-          {semesters.map((semester) => (
-            <option key={semester} value={semester}>
-              {semester}
-            </option>
-          ))}
-        </select>
-      </div>
+            name="sem"
+            value={user.sem}
+            onChange={handleInputChange}
+            className="form-control"
+          >
+            <option value="">Select Semester</option>
+            <option value="1">1st Semester</option>
+            <option value="2">2nd Semester</option>
+            <option value="3">3rd Semester</option>
+            <option value="4">4th Semester</option>
+          </select>
+          {isSubmitted && !user.sem.trim() && <span className="danger">Semester is required</span>}
+        </div>
 
         <div className="form-group">
-          <label htmlFor="city">Contact No:</label>
+          <label htmlFor="city">City:</label>
           <div className="relative">
             <input
               type="text"
@@ -159,11 +192,11 @@ const AddUser = () => {
             />
             <i className="fa fa-map-marker">📞</i>
           </div>
-          {isSubmitted && errorMsg.city && <span className="danger">{errorMsg.city}</span>}
+          {isSubmitted && !user.city.trim() && <span className="danger">City is required</span>}
         </div>
 
         <div className="tright">
-          <button className="btn-margin button1" onClick={saveForm}>Save</button>
+          <button type="submit" className="btn-margin button1">Save</button>
         </div>
       </form>
     </div>

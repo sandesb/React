@@ -6,8 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import Body from "../theme/Body";
+import { deleteUser } from "../../service/user-management.service";
+
 const Delete = () =>{
     const navigate = useNavigate();
+    const { values } = useParams();
+
 
 const {id}=useParams();
 const {semesterKey}=useParams();
@@ -22,19 +26,15 @@ const [user, setUser] = useState({
 
 });
 
- useEffect(()=>{ 
-    axios
-    .get(`http://localhost:4000/${semesterKey}/${id}`)
+useEffect(() => {
+    axios.get(`http://localhost:4000/users/${id}`)
     .then((res) => {
-      console.log(res.data);
       setUser(res.data);
-    })
-    .catch((err) => {  // Corrected the opening bracket for catch
-      alert("API Server Error");
+    } ).catch((err) => {  
+      alert("API server error");
       console.log(err);
     });
-}, []);
-
+  }, []);
 const notify = () => toast.error(`Khatam tata goodbye gaya ${user.username} !`,{
     position: "top-right",
     autoClose: 5000,
@@ -46,23 +46,18 @@ const notify = () => toast.error(`Khatam tata goodbye gaya ${user.username} !`,{
     theme: "colored",
 });
 
-const deleteUser = () => {
-    const confirm = window.confirm("Are you sure you wanna delete this user?");
-    if(confirm){
-        notify();
+const handleDeleteUser = () => {
+    const confirm = window.confirm("Are you sure want to delete this user?");
+    if(confirm) {
+      deleteUser(id).then(() => {
+        navigate(`/pages/UserManagement/1`);
+        console.log("Delete user success");
+      }).catch((err) => {
+        console.log(err);
+      });
+    };
+  }
 
-        axios.delete(`http://localhost:4000/${semesterKey}/${id}`)
-        .then((res) => {
-
-            navigate(`/pages/UserManagement/1`);
-
-            
-          })
-          .catch((err) => {  // Corrected the opening bracket for catch
-            console.log(err);
-          });
-}
-}
     return (
         <div class="flex1 del">
 
@@ -77,8 +72,8 @@ const deleteUser = () => {
             <div>
             <br></br>
 
-                <button type="button" className="btn btn-danger" onClick={deleteUser}>Damn, Sure! 😈</button> 
-                <button type="button" className="btn button1" onClick={()=>{navigate('/pages/UserManagement');
+                <button type="button" className="btn btn-danger" onClick={handleDeleteUser}>Damn, Sure! 😈</button> 
+                <button type="button" className="btn button1" onClick={()=>{navigate(`/pages/UserManagement/${values}`);
                 }}>Last Chance 💚</button>        
         </div>
 

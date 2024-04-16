@@ -10,14 +10,13 @@ import ViPassInput from "../../components/ViPassInput";
 const EditUser = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { semesterKey } = useParams();
 
 
   const [user, setUser] = useState({
     username: "",
     password: "",
     email: "",
-    age: "",
+    sem: "",
     city: "",
   });
 
@@ -44,11 +43,17 @@ const EditUser = () => {
       user.username !== "" &&
       user.password !== "" &&
       user.email !== "" &&
-      user.age !== "" &&
+      user.sem !== "" &&
       user.city !== ""
     );
   };
+  const { semesterKey } = useParams();
+  const [selectedSemester, setSelectedSemester] = useState(semesterKey || 'firstsem'); // Default to 'firstsem' if semesterKey is undefined
 
+  const handleSemesterChange = (event) => {
+    setSelectedSemester(event.target.value);
+  };
+  const semesters = ['firstsem', 'secondsem', 'thirdsem', 'fourthsem'];
   const saveForm = (event) => {
     event.preventDefault(); // Prevent default form submission behavior
 
@@ -94,7 +99,7 @@ const EditUser = () => {
           errMessage=""
         />
 
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">Matric No:</label>
         <ViPassInput
           title="password"
           name="password"
@@ -119,21 +124,25 @@ const EditUser = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="age">Age:</label>
-          <input
-            type="text"
-            name="age"
-            value={user.age}
-            onChange={handleInputChange}
-            className="form-control"
-          />
-          {isSubmitted && user.age === "" && (
-            <span className="danger">Age is required</span>
-          )}
-        </div>
+          <label htmlFor="age">Semester:</label>
+          <i className="fa fa-calendar">📅</i>
+          <select
+          id="semester"
+          name="sem"
+          value={selectedSemester}
+          onChange={handleSemesterChange}
+          className="form-control"
+        >
+          {semesters.map((semester) => (
+            <option key={semester} value={semester}>
+              {semester}
+            </option>
+          ))}
+        </select>
+      </div>
 
         <div className="form-group">
-          <label htmlFor="city">City:</label>
+          <label htmlFor="city">Contact No:</label>
           <input
             type="text"
             name="city"

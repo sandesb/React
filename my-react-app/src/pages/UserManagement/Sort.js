@@ -8,11 +8,14 @@ import { useParams, useNavigate } from "react-router-dom";
 const Sort = () => {
   const [users, setUsers] = useState([]);
   const { semesterKey } = useParams();
+  const { values } = useParams();
 
 
   useEffect(() => {
     // Fetch user data (replace URL with your API endpoint)
-    axios.get(`http://localhost:4000/${semesterKey}`)
+    if (values) {
+      axios
+      .get(`http://localhost:4000/users/?sem=${values}`) // Construct the API URL with the semesterKey
       .then((response) => {
         const sortedUsers = response.data.sort((a, b) => a.username.localeCompare(b.username));
         setUsers(sortedUsers);
@@ -20,7 +23,10 @@ const Sort = () => {
       .catch((error) => {
         console.error('Error fetching user data:', error);
       });
-  }, []);
+    }
+  }, [values]);
+
+
 
   return (
     <div>

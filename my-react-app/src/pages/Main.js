@@ -13,10 +13,7 @@ const Main = () => {
 
                         <div class="col-lg-8 col-12 mx-auto">
                             <h1 class="vcolor text-center">Publication Club</h1>
-
                             <h2 class="newcolor text-center ">- Starter Pack for Public Speaking -</h2>
-
-                    
                         </div>
 
                     </div>

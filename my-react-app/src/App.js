@@ -23,7 +23,7 @@ import Randomizer from './pages/Randomizer';
 import Faq from './pages/Faq';
 import Detail from './pages/UserManagement/Detail';
 import Delete from './pages/UserManagement/Delete';
-import EditUser from './pages/UserManagement/EditUser';
+// import EditUser from './pages/UserManagement/EditUser';
 
 import PrivateRoute from './routes/PrivateRoute';
 import Main from './pages/Main';
@@ -57,10 +57,10 @@ function App() {
 
 
           <Route path="/UserManagement/Delete/:semesterKey/:id" element={<Delete/> } />
-          <Route path="/UserManagement/EditUser/:semesterKey/:id" element={<EditUser/>}/>
+          <Route path="/UserManagement/EditUser/:semesterKey/:id" element={<AddUser/>}/>
 
           <Route path="/UserManagement/Detail/:semesterKey/:id" element={<Detail/> } />
-          <Route path="/pages/UserManagement/Sort/:semesterKey" element={<Sort/> } />
+          <Route path="/pages/UserManagement/Sort/:values" element={<Sort/> } />
 
           <Route path="/pages/Faq" element={<Faq/> } />
           <Route path="/pages/Counter" element={<Counter/> } />
