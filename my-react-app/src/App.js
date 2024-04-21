@@ -52,7 +52,7 @@ function App() {
 
 
 
-          <Route path="/pages/UserManagement/:values" element={<PrivateRoute component={UserManagement}/> } />
+          <Route  path="/pages/UserManagement/:values" element={<PrivateRoute component={UserManagement}/> } />
           <Route path="/pages/UserManagement/AddUser" element={<PrivateRoute component={AddUser}/>}/>
 
 
